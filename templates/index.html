@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block 'title' %}Home{% endblock 'title' %}
+
+{% block 'content' %}
+    <div class="container-fluid">
+        <h5 class="text-center">Dashboard</h5>
+    </div>
+    <div class="container">
+        {% if request.user.is_authenticated %}
+            <h2>Welcome {{request.user.first_name}}</h2>
+        {% endif %}
+        <div class="row">
+            <div class="col-lg-3 col-sm-2 text-center">
+                <p>Bazar</p>
+                <a href="#">Add Bazar</a>
+            </div>
+        </div>
+    </div>
+{% endblock 'content' %}
+
