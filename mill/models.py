@@ -20,8 +20,11 @@ class Mill(models.Model):
     date = models.DateField()
     member = models.ForeignKey(Member, on_delete=models.CASCADE)
     mill = models.IntegerField(choices=MILL_NUMBER, default=2)
-    bazar = models.ForeignKey(Member, on_delete=models.CASCADE, related_name='bazar_person')
+    bazar = models.ForeignKey(Member, on_delete=models.CASCADE, related_name='bazar_person', blank=True, null=True)
 
     class Meta:
         unique_together = ('date', 'member',)
+
+    def __int__(self):
+        return self.mill
 

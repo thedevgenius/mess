@@ -26,7 +26,9 @@ urlpatterns = [
     path('', core_view.Home, name='home'),
     path('registration/', acc_view.Registration, name='registration'),
     path('dashboard/', core_view.Dashboard, name='dashboard'),
-    path('mill/', include('mill.urls'))
+    path('mill/', include('mill.urls')),
+    path('fetch_posts/', core_view.get_mills, name='fetch_posts'),
+    path('save_mill/', core_view.save_mill, name='save_mill'),
 ]
 
 
