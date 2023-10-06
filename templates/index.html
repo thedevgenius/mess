@@ -1,31 +1,30 @@
-{% extends "base.html" %}
+{% load static %}
+<!doctype html>
+<html lang="en" dir="ltr" data-nav-layout="vertical" class="dark" data-header-styles="dark" data-menu-styles="dark">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Home | Draupadi Mess</title>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+</head>
 
-{% block 'title' %}Home{% endblock 'title' %}
-
-{% block 'content' %}
-    <div class="container">
-        <h1>Welcome </h1>
+<body class="">
+    
+    <div class="wrapper mt-5">
+        <div class="container">
+            <ul>
+                <li><a href="{% url 'login' %}">Login</a></li>
+            </ul>
+        </div>
     </div>
-    <form method="post" id="mill-form">
-        {% csrf_token %}
-        {% for member in members %}
-            <input type="date" name="mill_date{{forloop.counter}}" id="newdatePicker">
-            <select name="mill_person{{forloop.counter}}">
-                <option value="{{member.id}}">{{member.first_name}}</option>
-            </select>
-            <select name="mill_mill{{forloop.counter}}">
-                <option value="0">0</option>
-                <option value="1">1</option>
-                <option value="3">2</option>
-            </select>
-            <select name="mill_bazar{{forloop.counter}}">
-                <option value="1">Rupam</option>
-            </select><br>
-        {% endfor %}
 
-        <button type="submit">Save</button>
-    </form>
-    <div id="result"></div>
-    {% include 'content.html' %}
-{% endblock 'content' %}
 
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    
+</body>
+
+</html>

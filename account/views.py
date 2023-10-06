@@ -1,5 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import login, logout, authenticate
+from django.contrib.auth.decorators import login_required
+from django.views.decorators.cache import cache_control
 from .models import *
 
 # Create your views here.
@@ -22,3 +24,20 @@ def Registration(request):
         pass
     return render(request, 'registration.html')
 
+
+def Login(request):
+    if request.method == 'POST':
+        phone=request.POST['phone']
+        password=request.POST['password']
+        user = authenticate(phone=phone, password=password)
+        if user is not None:
+            login(request, user)
+            return redirect('dashboard')
+        
+    return render(request, 'login.html')
+
+
+@cache_control(no_cache=True, must_revalidate=True, no_store=True)
+def Logout(request):
+    logout(request)
+    return redirect('home')

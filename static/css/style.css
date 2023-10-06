@@ -1,5 +1,39 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: "Poppins", sans-serif;
+}
+
+.side-menu__item {
+  font-size: 15px !important;
+}
+
+.btn {
+  border-radius: 0;
+  text-transform: uppercase;
+  font-weight: 300;
+  font-size: 16px;
+}
+
+.login-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Inter", sans-serif;
+  height: 100vh;
+}
+
+.loginform {
+  min-width: 400px;
+  max-width: 400px;
+  margin: 0 auto;
+  box-shadow: 0 0 10px #ccc;
+  padding: 30px;
+}
+.loginform h1 {
+  font-weight: 400;
+  font-size: 35px;
+}
+.loginform input {
+  border-radius: 0;
+  height: 50px;
 }/*# sourceMappingURL=style.css.map */

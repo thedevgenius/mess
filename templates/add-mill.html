@@ -1,17 +1,45 @@
 {% extends "base.html" %}
 
-{% block 'title' %}Home{% endblock 'title' %}
+{% block 'title' %}Add Mill Draupadi Mess{% endblock 'title' %}
 
 {% block 'content' %}
-    <div class="container-fluid">
-        <h5 class="text-center">Add Mill</h5>
+    <div class="content">
+        <!-- Start::main-content -->
+        <div class="main-content">
+            <!-- Page Header -->
+            <div class="block justify-between page-header md:flex">
+                <div>
+                    <h3 class="text-gray-700 hover:text-gray-900 dark:text-white dark:hover:text-white text-2xl font-medium">Add Mill</h3>
+                </div>
+                <ol class="flex items-center whitespace-nowrap min-w-0">
+                    <li class="text-sm">
+                        <a class="flex items-center font-semibold text-primary hover:text-primary dark:text-primary truncate" href="javascript:void(0);">Home<i class="ti ti-chevrons-right flex-shrink-0 mx-3 overflow-visible text-gray-300 dark:text-gray-300 rtl:rotate-180"></i></a>
+                    </li>
+                    <li class="text-sm text-gray-500 hover:text-primary dark:text-white/70 " aria-current="page">Add Mill</li>
+                </ol>
+            </div>
+            <!-- Page Header Close -->
+
+            <!-- Start::row-1 -->
+            <div class="grid grid-cols-12 gap-x-6">
+                <div class="box">
+                    <div class="box-body">
+                        <div class="flex rounded-sm shadow-sm">
+                            <div class="px-4 inline-flex items-center min-w-fit ltr:rounded-l-sm rtl:rounded-r-sm border ltr:border-r-0 rtl:border-l-0 border-gray-200 bg-gray-50 dark:bg-black/20 dark:border-white/10">
+                                <span class="text-sm text-gray-500 dark:text-white/70"><i class="ri ri-calendar-line"></i></span>
+                            </div>
+
+                            <input type="text" class="ti-form-input ltr:rounded-l-none rtl:rounded-r-none focus:z-10 flatpickr-input active" id="date" placeholder="Choose date" readonly="readonly">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+        <!-- Start::main-content -->
     </div>
-    <div class="container">
-        <form method="post">
-            {% csrf_token %}
-            {{form.as_p}}
-            <button type="submit" class="btn btn-primary">Save</button>
-        </form>
-    </div>
+
+
+
 {% endblock 'content' %}
 

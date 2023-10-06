@@ -1,0 +1,37 @@
+{% load static %}
+<!doctype html>
+<html lang="en" dir="ltr" data-nav-layout="vertical" class="dark" data-header-styles="dark" data-menu-styles="dark">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Login | Draupadi Mess</title>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+</head>
+
+<body class="">
+    
+    <div class="wrapper">
+        <div class="container login-container">
+            <div class="loginform text-center">
+                <h1 class="">Sign In</h1>
+                <p>Sing In to your account</p>
+                <form method="post">
+                    {% csrf_token %}
+                    <input type="text" name="phone" placeholder="Phone Number" class="form-control mb-3">
+                    <input type="password" name="password" placeholder="Password" class="form-control mb-3">
+                    <button type="submit" class="btn btn-dark btn-lg">Login</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    
+</body>
+
+</html>
