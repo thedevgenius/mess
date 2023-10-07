@@ -1,971 +1,701 @@
-{% load static %}
-<!doctype html>
-<html lang="en" dir="ltr" data-nav-layout="vertical" class="dark" data-header-styles="dark" data-menu-styles="dark">
-<head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{% block 'title' %}{% endblock 'title' %}</title>
-    <!-- Favicon -->
-    <link rel="shortcut icon" href="{% static 'assets/img/brand-logos/favicon.ico">
-    <!-- Main JS -->
-    <script src="{% static 'assets/js/main.js' %}"></script>
-    <!-- Style Css -->
-    <link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
-    <!-- Simplebar Css -->
-    <link rel="stylesheet" href="{% static 'assets/libs/simplebar/simplebar.min.css' %}">
-    <!-- Color Picker Css -->
-    <link rel="stylesheet" href="{% static 'assets/libs/simonwep/pickr/themes/nano.min.css' %}">
-    <!-- Vector Map Css-->
-    <link rel="stylesheet" href="{% static 'assets/libs/jsvectormap/css/jsvectormap.min.css' %}">
-    <!-- Flatpickr Css -->
-    <link rel="stylesheet" href="{% static 'assets/libs/flatpickr/flatpickr.min.css' %}">
-     <!-- Color Picker Css -->
-    <link rel="stylesheet" href="{% static 'assets/libs/simonwep/pickr/themes/classic.min.css' %}">
-    <link rel="stylesheet" href="{% static 'assets/libs/simonwep/pickr/themes/monolith.min.css' %}">
-    <link rel="stylesheet" href="{% static 'assets/libs/simonwep/pickr/themes/nano.min.css' %}">
+<!DOCTYPE html>
+<html lang="en" class="light-style layout-navbar-fixed layout-menu-fixed layout-compact" dir="ltr" data-theme="theme-default" data-assets-path="/static/assets/" data-template="vertical-menu-template">
 
-    {% comment %} <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}"> {% endcomment %}
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
+
+    <title>Dashboard - Analytics | Materialize - Material Design HTML Admin Template</title>
+
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/static/assets/img/favicon/favicon.ico" />
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&ampdisplay=swap" />
+
+    <!-- Icons -->
+    <link rel="stylesheet" href="/static/assets/vendor/fonts/materialdesignicons.css" />
+    <link rel="stylesheet" href="/static/assets/vendor/fonts/fontawesome.css" />
+    <link rel="stylesheet" href="/static/assets/vendor/fonts/flag-icons.css" />
+
+    <!-- Menu waves for no-customizer fix -->
+    <link rel="stylesheet" href="/static/assets/vendor/libs/node-waves/node-waves.css" />
+
+    <!-- Core CSS -->
+    <link rel="stylesheet" type="text/css" href="/static/assets/vendor/css/rtl/core.css" class="template-customizer-core-css">
+    <link rel="stylesheet" type="text/css" href="/static/assets/vendor/css/rtl/theme-default.css" class="template-customizer-theme-css">
+    <link rel="stylesheet" type="text/css" href="/static/assets/css/demo.css">
+
+    <!-- Vendors CSS -->
+    <link rel="stylesheet" href="/static/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css" />
+    <link rel="stylesheet" href="/static/assets/vendor/libs/typeahead-js/typeahead.css" />
+    <link rel="stylesheet" href="/static/assets/vendor/libs/apex-charts/apex-charts.css" />
+    <link rel="stylesheet" href="/static/assets/vendor/libs/swiper/swiper.css" />
+    <link rel="stylesheet" href="/static/assets/vendor/libs/flatpickr/flatpickr.css" />
+    <link rel="stylesheet" href="/static/assets/vendor/libs/bootstrap-datepicker/bootstrap-datepicker.css" />
+    {% comment %} <link rel="stylesheet" href="/static/assets/vendor/libs/bootstrap-daterangepicker/bootstrap-daterangepicker.css" /> {% endcomment %}
+    <link rel="stylesheet" href="/static/assets/vendor/libs/jquery-timepicker/jquery-timepicker.css" />
+    <link rel="stylesheet" href="/static/assets/vendor/libs/pickr/pickr-themes.css" />
+
+    <!-- Page CSS -->
+    <link rel="stylesheet" href="/static/assets/vendor/css/pages/cards-statistics.css" />
+    <link rel="stylesheet" href="/static/assets/vendor/css/pages/cards-analytics.css" />
+
+    <!-- Helpers -->
+    <script src="/static/assets/vendor/js/helpers.js"></script>
+    <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
+    <!--? Template customizer: To hide customizer set displayCustomizer value false in config.js.  -->
+    <script src="/static/assets/vendor/js/template-customizer.js"></script>
+    <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
+    <script src="/static/assets/js/config.js"></script>
 </head>
 
-<body class="">
+<body>
+    <!-- Layout wrapper -->
+    <div class="layout-wrapper layout-content-navbar">
+        <div class="layout-container">
+            <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
+                <div class="app-brand demo">
+                    <a href="index.html" class="app-brand-link">
+                        <span class="app-brand-logo demo">
+                            <span style="color: var(--bs-primary)">
+                                <svg width="268" height="150" viewBox="0 0 38 20" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M30.0944 2.22569C29.0511 0.444187 26.7508 -0.172113 24.9566 0.849138C23.1623 1.87039 22.5536 4.14247 23.5969 5.92397L30.5368 17.7743C31.5801 19.5558 33.8804 20.1721 35.6746 19.1509C37.4689 18.1296 38.0776 15.8575 37.0343 14.076L30.0944 2.22569Z"
+                                        fill="currentColor" />
+                                    <path
+                                        d="M30.171 2.22569C29.1277 0.444187 26.8274 -0.172113 25.0332 0.849138C23.2389 1.87039 22.6302 4.14247 23.6735 5.92397L30.6134 17.7743C31.6567 19.5558 33.957 20.1721 35.7512 19.1509C37.5455 18.1296 38.1542 15.8575 37.1109 14.076L30.171 2.22569Z"
+                                        fill="url(#paint0_linear_2989_100980)" fill-opacity="0.4" />
+                                    <path
+                                        d="M22.9676 2.22569C24.0109 0.444187 26.3112 -0.172113 28.1054 0.849138C29.8996 1.87039 30.5084 4.14247 29.4651 5.92397L22.5251 17.7743C21.4818 19.5558 19.1816 20.1721 17.3873 19.1509C15.5931 18.1296 14.9843 15.8575 16.0276 14.076L22.9676 2.22569Z"
+                                        fill="currentColor" />
+                                    <path
+                                        d="M14.9558 2.22569C13.9125 0.444187 11.6122 -0.172113 9.818 0.849138C8.02377 1.87039 7.41502 4.14247 8.45833 5.92397L15.3983 17.7743C16.4416 19.5558 18.7418 20.1721 20.5361 19.1509C22.3303 18.1296 22.9391 15.8575 21.8958 14.076L14.9558 2.22569Z"
+                                        fill="currentColor" />
+                                    <path
+                                        d="M14.9558 2.22569C13.9125 0.444187 11.6122 -0.172113 9.818 0.849138C8.02377 1.87039 7.41502 4.14247 8.45833 5.92397L15.3983 17.7743C16.4416 19.5558 18.7418 20.1721 20.5361 19.1509C22.3303 18.1296 22.9391 15.8575 21.8958 14.076L14.9558 2.22569Z"
+                                        fill="url(#paint1_linear_2989_100980)" fill-opacity="0.4" />
+                                    <path
+                                        d="M7.82901 2.22569C8.87231 0.444187 11.1726 -0.172113 12.9668 0.849138C14.7611 1.87039 15.3698 4.14247 14.3265 5.92397L7.38656 17.7743C6.34325 19.5558 4.04298 20.1721 2.24875 19.1509C0.454514 18.1296 -0.154233 15.8575 0.88907 14.076L7.82901 2.22569Z"
+                                        fill="currentColor" />
+                                    <defs>
+                                        <linearGradient id="paint0_linear_2989_100980" x1="5.36642" y1="0.849138"
+                                            x2="10.532" y2="24.104" gradientUnits="userSpaceOnUse">
+                                            <stop offset="0" stop-opacity="1" />
+                                            <stop offset="1" stop-opacity="0" />
+                                        </linearGradient>
+                                        <linearGradient id="paint1_linear_2989_100980" x1="5.19475" y1="0.849139"
+                                            x2="10.3357" y2="24.1155" gradientUnits="userSpaceOnUse">
+                                            <stop offset="0" stop-opacity="1" />
+                                            <stop offset="1" stop-opacity="0" />
+                                        </linearGradient>
+                                    </defs>
+                                </svg>
+                            </span>
+                        </span>
+                        <span class="app-brand-text demo menu-text fw-bold ms-2">Materialize</span>
+                    </a>
 
-     <!-- ========== Switcher  ========== -->
-    <div id="hs-overlay-switcher" class="hs-overlay hidden ti-offcanvas ti-offcanvas-right" tabindex="-1">
-        <div class="ti-offcanvas-header z-10 relative">
-            <h3 class="ti-offcanvas-title">
-                Switcher
-            </h3>
-            <button type="button"
-                class="ti-btn flex-shrink-0 p-0 transition-none text-gray-500 hover:text-gray-700 focus:ring-gray-400 focus:ring-offset-white dark:text-white/70 dark:hover:text-white/80 dark:focus:ring-white/10 dark:focus:ring-offset-white/10"
-                data-hs-overlay="#hs-overlay-switcher">
-                <span class="sr-only">Close modal</span>
-                <i class="ri-close-circle-line leading-none text-lg"></i>
-            </button>
-        </div>
-        <div class="ti-offcanvas-body pt-0 border-b dark:border-white/10 z-10 relative">
-            <div class="flex space-x-2 rtl:space-x-reverse" aria-label="Tabs" role="tablist">
-                <button type="button"
-                    class="hs-tab-active:bg-secondary/10 w-full hs-tab-active:border-b-transparent hs-tab-active:text-secondary dark:hs-tab-active:bg-black/20 dark:hs-tab-active:border-b-white/10 dark:hs-tab-active:text-secondary -mb-px py-2 px-3 bg-white text-xs font-medium text-center border text-gray-500 rounded-sm hover:text-gray-700 dark:bg-bgdark dark:border-white/10 dark:text-white/70 active"
-                    id="switcher-item-1" data-hs-tab="#switcher-1" aria-controls="switcher-1" role="tab">
-                    Theme Style
-                </button>
-                <button type="button"
-                    class="hs-tab-active:bg-secondary/10 w-full hs-tab-active:border-b-transparent hs-tab-active:text-secondary dark:hs-tab-active:bg-black/20 dark:hs-tab-active:border-b-white/10 dark:hs-tab-active:text-secondary -mb-px py-2 px-3 bg-white text-xs font-medium text-center border text-gray-500 rounded-sm hover:text-gray-700 dark:bg-bgdark dark:border-white/10 dark:text-white/70 dark:hover:text-gray-300"
-                    id="switcher-item-2" data-hs-tab="#switcher-2" aria-controls="switcher-2" role="tab">
-                    Theme Colors
-                </button>
-            </div>
-        </div>
-        <div class="ti-offcanvas-body" id="switcher-body">
-            <div id="switcher-1" role="tabpanel" aria-labelledby="switcher-item-1" class="space-y-6">
-                <div class="space-y-6">
-                    <p class="switcher-style-head">Theme Color Mode:</p>
-                    <div class="grid grid-cols-3 gap-6 switcher-style">
-                        <div class="flex">
-                            <input type="radio" name="theme-style" class="ti-form-radio" id="switcher-light-theme"
-                                checked>
-                            <label for="switcher-light-theme"
-                                class="text-xs text-gray-500 ltr:ml-2 rtl:mr-2 dark:text-white/70">Light</label>
-                        </div>
-                        <div class="flex">
-                            <input type="radio" name="theme-style" class="ti-form-radio" id="switcher-dark-theme">
-                            <label for="switcher-dark-theme"
-                                class="text-xs text-gray-500 ltr:ml-2 rtl:mr-2 dark:text-white/70">Dark</label>
-                        </div>
-                    </div>
-                </div>
-                <div class="space-y-6">
-                    <p class="switcher-style-head">Directions:</p>
-                    <div class="grid grid-cols-3 gap-6 switcher-style">
-                        <div class="flex">
-                            <input type="radio" name="direction" class="ti-form-radio" id="switcher-ltr" checked>
-                            <label for="switcher-ltr"
-                                class="text-xs text-gray-500 ltr:ml-2 rtl:mr-2 dark:text-white/70">LTR</label>
-                        </div>
-                        <div class="flex">
-                            <input type="radio" name="direction" class="ti-form-radio" id="switcher-rtl">
-                            <label for="switcher-rtl"
-                                class="text-xs text-gray-500 ltr:ml-2 rtl:mr-2 dark:text-white/70">RTL</label>
-                        </div>
-                    </div>
-                </div>
-                <div class="space-y-6">
-                    <p class="switcher-style-head">Navigation Styles:</p>
-                    <div class="grid grid-cols-3 gap-6 switcher-style">
-                        <div class="flex">
-                            <input type="radio" name="navigation-style" class="ti-form-radio" id="switcher-vertical"
-                                checked>
-                            <label for="switcher-vertical"
-                                class="text-xs text-gray-500 ltr:ml-2 rtl:mr-2 dark:text-white/70">Vertical</label>
-                        </div>
-                        <div class="flex">
-                            <input type="radio" name="navigation-style" class="ti-form-radio" id="switcher-horizontal">
-                            <label for="switcher-horizontal"
-                                class="text-xs text-gray-500 ltr:ml-2 rtl:mr-2 dark:text-white/70">Horizontal</label>
-                        </div>
-                    </div>
-                </div>
-                <div class="space-y-6">
-                    <p class="switcher-style-head">Navigation Menu Style:</p>
-                    <div class="grid grid-cols-2 gap-6 switcher-style">
-                        <div class="flex">
-                            <input type="radio" name="navigation-data-menu-styles" class="ti-form-radio"
-                                id="switcher-menu-click" checked>
-                            <label for="switcher-menu-click"
-                                class="text-xs text-gray-500 ltr:ml-2 rtl:mr-2 dark:text-white/70">Menu
-                                Click</label>
-                        </div>
-                        <div class="flex">
-                            <input type="radio" name="navigation-data-menu-styles" class="ti-form-radio"
-                                id="switcher-menu-hover">
-                            <label for="switcher-menu-hover"
-                                class="text-xs text-gray-500 ltr:ml-2 rtl:mr-2 dark:text-white/70">Menu
-                                Hover</label>
-                        </div>
-                        <div class="flex">
-                            <input type="radio" name="navigation-data-menu-styles" class="ti-form-radio"
-                                id="switcher-icon-click">
-                            <label for="switcher-icon-click"
-                                class="text-xs text-gray-500 ltr:ml-2 rtl:mr-2 dark:text-white/70">Icon
-                                Click</label>
-                        </div>
-                        <div class="flex">
-                            <input type="radio" name="navigation-data-menu-styles" class="ti-form-radio"
-                                id="switcher-icon-hover">
-                            <label for="switcher-icon-hover"
-                                class="text-xs text-gray-500 ltr:ml-2 rtl:mr-2 dark:text-white/70">Icon
-                                Hover</label>
-                        </div>
-                    </div>
-                    <div class="px-4 text-secondary text-xs"><b class="lt:mr-2 rtl:ml-2">Note:</b>Works same for both
-                        Vertical and
-                        Horizontal
-                    </div>
-                </div>
-                <div class="space-y-6">
-                    <p class="switcher-style-head">Page Styles:</p>
-                    <div class="grid grid-cols-3 gap-6 switcher-style">
-                        <div class="flex">
-                            <input type="radio" name="data-page-styles" class="ti-form-radio" id="switcher-regular"
-                                checked>
-                            <label for="switcher-regular"
-                                class="text-xs text-gray-500 ltr:ml-2 rtl:mr-2 dark:text-white/70">Regular</label>
-                        </div>
-                        <div class="flex">
-                            <input type="radio" name="data-page-styles" class="ti-form-radio" id="switcher-classic">
-                            <label for="switcher-classic"
-                                class="text-xs text-gray-500 ltr:ml-2 rtl:mr-2 dark:text-white/70">Classic</label>
-                        </div>
-                    </div>
-                </div>
-                <div class="space-y-6">
-                    <p class="switcher-style-head">Layout Width Styles:</p>
-                    <div class="grid grid-cols-3 gap-6 switcher-style">
-                        <div class="flex">
-                            <input type="radio" name="layout-width" class="ti-form-radio" id="switcher-full-width"
-                                checked>
-                            <label for="switcher-full-width"
-                                class="text-xs text-gray-500 ltr:ml-2 rtl:mr-2 dark:text-white/70">FullWidth</label>
-                        </div>
-                        <div class="flex">
-                            <input type="radio" name="layout-width" class="ti-form-radio" id="switcher-boxed">
-                            <label for="switcher-boxed"
-                                class="text-xs text-gray-500 ltr:ml-2 rtl:mr-2 dark:text-white/70">Boxed</label>
-                        </div>
-                    </div>
-                </div>
-                <div class="space-y-6">
-                    <p class="switcher-style-head">Menu Positions:</p>
-                    <div class="grid grid-cols-3 gap-6 switcher-style">
-                        <div class="flex">
-                            <input type="radio" name="data-menu-positions" class="ti-form-radio"
-                                id="switcher-menu-fixed" checked>
-                            <label for="switcher-menu-fixed"
-                                class="text-xs text-gray-500 ltr:ml-2 rtl:mr-2 dark:text-white/70">Fixed</label>
-                        </div>
-                        <div class="flex">
-                            <input type="radio" name="data-menu-positions" class="ti-form-radio"
-                                id="switcher-menu-scroll">
-                            <label for="switcher-menu-scroll"
-                                class="text-xs text-gray-500 ltr:ml-2 rtl:mr-2 dark:text-white/70">Scrollable </label>
-                        </div>
-                    </div>
-                </div>
-                <div class="space-y-6">
-                    <p class="switcher-style-head">Header Positions:</p>
-                    <div class="grid grid-cols-3 gap-6 switcher-style">
-                        <div class="flex">
-                            <input type="radio" name="data-header-positions" class="ti-form-radio"
-                                id="switcher-header-fixed" checked>
-                            <label for="switcher-header-fixed"
-                                class="text-xs text-gray-500 ltr:ml-2 rtl:mr-2 dark:text-white/70">
-                                Fixed</label>
-                        </div>
-                        <div class="flex">
-                            <input type="radio" name="data-header-positions" class="ti-form-radio"
-                                id="switcher-header-scroll">
-                            <label for="switcher-header-scroll"
-                                class="text-xs text-gray-500 ltr:ml-2 rtl:mr-2 dark:text-white/70">Scrollable
-                            </label>
-                        </div>
-                    </div>
-                </div>
-                <div class="space-y-6 sidemenu-layout-styles">
-                    <p class="switcher-style-head">Sidemenu Layout Syles:</p>
-                    <div class="grid grid-cols-2 gap-6 switcher-style">
-                        <div class="flex">
-                            <input type="radio" name="sidemenu-layout-styles" class="ti-form-radio"
-                                id="switcher-default-menu" checked>
-                            <label for="switcher-default-menu"
-                                class="text-xs text-gray-500 ltr:ml-2 rtl:mr-2 dark:text-white/70 ">Default
-                                Menu</label>
-                        </div>
-                        <div class="flex">
-                            <input type="radio" name="sidemenu-layout-styles" class="ti-form-radio"
-                                id="switcher-closed-menu">
-                            <label for="switcher-closed-menu"
-                                class="text-xs text-gray-500 ltr:ml-2 rtl:mr-2 dark:text-white/70 ">
-                                Closed
-                                Menu</label>
-                        </div>
-                        <div class="flex">
-                            <input type="radio" name="sidemenu-layout-styles" class="ti-form-radio"
-                                id="switcher-icontext-menu">
-                            <label for="switcher-icontext-menu"
-                                class="text-xs text-gray-500 ltr:ml-2 rtl:mr-2 dark:text-white/70 ">Icon
-                                Text</label>
-                        </div>
-                        <div class="flex">
-                            <input type="radio" name="sidemenu-layout-styles" class="ti-form-radio"
-                                id="switcher-icon-overlay">
-                            <label for="switcher-icon-overlay"
-                                class="text-xs text-gray-500 ltr:ml-2 rtl:mr-2 dark:text-white/70 ">Icon
-                                Overlay</label>
-                        </div>
-                        <div class="flex">
-                            <input type="radio" name="sidemenu-layout-styles" class="ti-form-radio"
-                                id="switcher-detached">
-                            <label for="switcher-detached"
-                                class="text-xs text-gray-500 ltr:ml-2 rtl:mr-2 dark:text-white/70 ">Detached</label>
-                        </div>
-                        <div class="flex">
-                            <input type="radio" name="sidemenu-layout-styles" class="ti-form-radio"
-                                id="switcher-double-menu">
-                            <label for="switcher-double-menu"
-                                class="text-xs text-gray-500 ltr:ml-2 rtl:mr-2 dark:text-white/70">Double
-                                Menu</label>
-                        </div>
-                    </div>
-                    <div class="px-4 text-secondary text-xs"><b class="ltr:mr-2 rtl:ml-2">Note:</b>Navigation menu
-                        styles won't work
-                        here.</div>
-                </div>
-            </div>
-            <div id="switcher-2" class="hidden space-y-6" role="tabpanel" aria-labelledby="switcher-item-2">
-                <div class="theme-colors">
-                    <p class="switcher-style-head">Menu Colors:</p>
-                    <div class="flex switcher-style space-x-3 rtl:space-x-reverse">
-                        <div class="hs-tooltip ti-main-tooltip ti-form-radio switch-select ">
-                            <input class="hs-tooltip-toggle ti-form-radio color-input color-white" type="radio"
-                                name="menu-colors" id="switcher-menu-light" checked>
-                            <span
-                                class="hs-tooltip-content ti-main-tooltip-content py-1 px-2 bg-gray-900 text-xs font-medium text-white shadow-sm dark:bg-slate-700"
-                                role="tooltip">
-                                Light Menu
-                            </span>
-                        </div>
-                        <div class="hs-tooltip ti-main-tooltip ti-form-radio switch-select ">
-                            <input class="hs-tooltip-toggle ti-form-radio color-input color-dark" type="radio"
-                                name="menu-colors" id="switcher-menu-dark" checked>
-                            <span
-                                class="hs-tooltip-content ti-main-tooltip-content py-1 px-2 bg-gray-900 text-xs font-medium text-white shadow-sm dark:bg-slate-700"
-                                role="tooltip">
-                                Dark Menu
-                            </span>
-                        </div>
-                        <div class="hs-tooltip ti-main-tooltip ti-form-radio switch-select ">
-                            <input class="hs-tooltip-toggle ti-form-radio color-input color-primary" type="radio"
-                                name="menu-colors" id="switcher-menu-primary">
-                            <span
-                                class="hs-tooltip-content ti-main-tooltip-content py-1 px-2 bg-gray-900 text-xs font-medium text-white shadow-sm dark:bg-slate-700"
-                                role="tooltip">
-                                Color Menu
-                            </span>
-                        </div>
-                        <div class="hs-tooltip ti-main-tooltip ti-form-radio switch-select ">
-                            <input class="hs-tooltip-toggle ti-form-radio color-input color-gradient" type="radio"
-                                name="menu-colors" id="switcher-menu-gradient">
-                            <span
-                                class="hs-tooltip-content ti-main-tooltip-content py-1 px-2 bg-gray-900 text-xs font-medium text-white shadow-sm dark:bg-slate-700"
-                                role="tooltip">
-                                Gradient Menu
-                            </span>
-                        </div>
-                        <div class="hs-tooltip ti-main-tooltip ti-form-radio switch-select ">
-                            <input class="hs-tooltip-toggle ti-form-radio color-input color-transparent" type="radio"
-                                name="menu-colors" id="switcher-menu-transparent">
-                            <span
-                                class="hs-tooltip-content ti-main-tooltip-content py-1 px-2 bg-gray-900 text-xs font-medium text-white shadow-sm dark:bg-slate-700"
-                                role="tooltip">
-                                Transparent Menu
-                            </span>
-                        </div>
-                    </div>
-                    <div class="px-4 text-secondary text-xs"><b class="ltr:mr-2 rtl:ml-2">Note:</b>If you want to change
-                        color Menu
-                        dynamically
-                        change from below Theme Primary color picker.</div>
-                </div>
-                <div class="theme-colors">
-                    <p class="switcher-style-head">Header Colors:</p>
-                    <div class="flex switcher-style space-x-3 rtl:space-x-reverse">
-                        <div class="hs-tooltip ti-main-tooltip ti-form-radio switch-select ">
-                            <input class="hs-tooltip-toggle ti-form-radio color-input color-white" type="radio"
-                                name="header-colors" id="switcher-header-light" checked>
-                            <span
-                                class="hs-tooltip-content ti-main-tooltip-content py-1 px-2 bg-gray-900 text-xs font-medium text-white shadow-sm dark:bg-slate-700"
-                                role="tooltip">
-                                Light Header
-                            </span>
-                        </div>
-                        <div class="hs-tooltip ti-main-tooltip ti-form-radio switch-select ">
-                            <input class="hs-tooltip-toggle ti-form-radio color-input color-dark" type="radio"
-                                name="header-colors" id="switcher-header-dark">
-                            <span
-                                class="hs-tooltip-content ti-main-tooltip-content py-1 px-2 bg-gray-900 text-xs font-medium text-white shadow-sm dark:bg-slate-700"
-                                role="tooltip">
-                                Dark Header
-                            </span>
-                        </div>
-                        <div class="hs-tooltip ti-main-tooltip ti-form-radio switch-select ">
-                            <input class="hs-tooltip-toggle ti-form-radio color-input color-primary" type="radio"
-                                name="header-colors" id="switcher-header-primary">
-                            <span
-                                class="hs-tooltip-content ti-main-tooltip-content py-1 px-2 bg-gray-900 text-xs font-medium text-white shadow-sm dark:bg-slate-700"
-                                role="tooltip">
-                                Color Header
-                            </span>
-                        </div>
-                        <div class="hs-tooltip ti-main-tooltip ti-form-radio switch-select ">
-                            <input class="hs-tooltip-toggle ti-form-radio color-input color-gradient" type="radio"
-                                name="header-colors" id="switcher-header-gradient">
-                            <span
-                                class="hs-tooltip-content ti-main-tooltip-content py-1 px-2 bg-gray-900 text-xs font-medium text-white shadow-sm dark:bg-slate-700"
-                                role="tooltip">
-                                Gradient Header
-                            </span>
-                        </div>
-                        <div class="hs-tooltip ti-main-tooltip ti-form-radio switch-select ">
-                            <input class="hs-tooltip-toggle ti-form-radio color-input color-transparent" type="radio"
-                                name="header-colors" id="switcher-header-transparent">
-                            <span
-                                class="hs-tooltip-content ti-main-tooltip-content py-1 px-2 bg-gray-900 text-xs font-medium text-white shadow-sm dark:bg-slate-700"
-                                role="tooltip">
-                                Transparent Header
-                            </span>
-                        </div>
-                    </div>
-                    <div class="px-4 text-secondary text-xs"><b class="ltr:mr-2 rtl:ml-2">Note:</b>If you want to change
-                        color
-                        Header dynamically
-                        change from below Theme Primary color picker.</div>
-                </div>
-                <div class="theme-colors">
-                    <p class="switcher-style-head">Theme Primary:</p>
-                    <div class="flex switcher-style space-x-3 rtl:space-x-reverse">
-                        <div class="ti-form-radio switch-select">
-                            <input class="ti-form-radio color-input color-primary-1" type="radio" name="theme-primary"
-                                id="switcher-primary" checked>
-                        </div>
-                        <div class="ti-form-radio switch-select">
-                            <input class="ti-form-radio color-input color-primary-2" type="radio" name="theme-primary"
-                                id="switcher-primary1">
-                        </div>
-                        <div class="ti-form-radio switch-select">
-                            <input class="ti-form-radio color-input color-primary-3" type="radio" name="theme-primary"
-                                id="switcher-primary2">
-                        </div>
-                        <div class="ti-form-radio switch-select">
-                            <input class="ti-form-radio color-input color-primary-4" type="radio" name="theme-primary"
-                                id="switcher-primary3">
-                        </div>
-                        <div class="ti-form-radio switch-select">
-                            <input class="ti-form-radio color-input color-primary-5" type="radio" name="theme-primary"
-                                id="switcher-primary4">
-                        </div>
-                        <div class="ti-form-radio switch-select ltr:pl-0 rtl:pr-0 mt-1 color-primary-light">
-                            <div class="theme-container-primary"></div>
-                            <div class="pickr-container-primary"></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="theme-colors">
-                    <p class="switcher-style-head">Theme Background:</p>
-                    <div class="flex switcher-style space-x-3 rtl:space-x-reverse">
-                        <div class="ti-form-radio switch-select">
-                            <input class="ti-form-radio color-input color-bg-1" type="radio" name="theme-background"
-                                id="switcher-background" checked>
-                        </div>
-                        <div class="ti-form-radio switch-select">
-                            <input class="ti-form-radio color-input color-bg-2" type="radio" name="theme-background"
-                                id="switcher-background1">
-                        </div>
-                        <div class="ti-form-radio switch-select">
-                            <input class="ti-form-radio color-input color-bg-3" type="radio" name="theme-background"
-                                id="switcher-background2">
-                        </div>
-                        <div class="ti-form-radio switch-select">
-                            <input class="ti-form-radio color-input color-bg-4" type="radio" name="theme-background"
-                                id="switcher-background3">
-                        </div>
-                        <div class="ti-form-radio switch-select">
-                            <input class="ti-form-radio color-input color-bg-5" type="radio" name="theme-background"
-                                id="switcher-background4">
-                        </div>
-                        <div class="ti-form-radio switch-select ltr:pl-0 rtl:pr-0 mt-1 color-bg-transparent">
-                            <div class="theme-container-background"></div>
-                            <div class="pickr-container-background"></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="menu-image theme-colors">
-                    <p class="switcher-style-head">Menu With Background Image:</p>
-                    <div class="flex switcher-style space-x-3 rtl:space-x-reverse">
-                        <div class="ti-form-radio switch-select">
-                            <input class="ti-form-radio bgimage-input bg-img1" type="radio" name="theme-images"
-                                id="switcher-bg-img">
-                        </div>
-                        <div class="ti-form-radio switch-select">
-                            <input class="ti-form-radio bgimage-input bg-img2" type="radio" name="theme-images"
-                                id="switcher-bg-img1">
-                        </div>
-                        <div class="ti-form-radio switch-select">
-                            <input class="ti-form-radio bgimage-input bg-img3" type="radio" name="theme-images"
-                                id="switcher-bg-img2">
-                        </div>
-                        <div class="ti-form-radio switch-select">
-                            <input class="ti-form-radio bgimage-input bg-img4" type="radio" name="theme-images"
-                                id="switcher-bg-img3">
-                        </div>
-                        <div class="ti-form-radio switch-select">
-                            <input class="ti-form-radio bgimage-input bg-img5" type="radio" name="theme-images"
-                                id="switcher-bg-img4">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="ti-offcanvas-footer !justify-center">
-            <a id="reset-all" class="ti-btn ti-btn-danger" href="javascript:void(0);">Reset</a>
-        </div>
-    </div>
-    <!-- ========== END Switcher  ========== -->
-
-    <div class="page">
-        <!-- Start::app-sidebar -->
-        <aside class="app-sidebar" id="sidebar">
-
-            <!-- Start::main-sidebar-header -->
-            <div class="main-sidebar-header">
-                <a href="index.html" class="header-logo">
-                    <img src="/static/assets/img/brand-logos/desktop-logo.png" alt="logo" class="main-logo desktop-logo">
-                    <img src="/static/assets/img/brand-logos/toggle-logo.png" alt="logo" class="main-logo toggle-logo">
-                    <img src="/static/assets/img/brand-logos/desktop-dark.png" alt="logo" class="main-logo desktop-dark">
-                    <img src="/static/assets/img/brand-logos/toggle-dark.png" alt="logo" class="main-logo toggle-dark">
-                </a>
-            </div>
-            <!-- End::main-sidebar-header -->
-
-            <!-- Start::main-sidebar -->
-            <div class="main-sidebar " id="sidebar-scroll">
-                <!-- Start::nav -->
-                <nav class="main-menu-container nav nav-pills flex-column sub-open">
-                    <div class="slide-left" id="slide-left">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="#7b8191" width="24" height="24" viewBox="0 0 24 24">
-                            <path d="M13.293 6.293 7.586 12l5.707 5.707 1.414-1.414L10.414 12l4.293-4.293z"></path>
+                    <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto">
+                        <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M11.4854 4.88844C11.0081 4.41121 10.2344 4.41121 9.75715 4.88844L4.51028 10.1353C4.03297 10.6126 4.03297 11.3865 4.51028 11.8638L9.75715 17.1107C10.2344 17.5879 11.0081 17.5879 11.4854 17.1107C11.9626 16.6334 11.9626 15.8597 11.4854 15.3824L7.96672 11.8638C7.48942 11.3865 7.48942 10.6126 7.96672 10.1353L11.4854 6.61667C11.9626 6.13943 11.9626 5.36568 11.4854 4.88844Z"
+                                fill="currentColor" fill-opacity="0.6" />
+                            <path
+                                d="M15.8683 4.88844L10.6214 10.1353C10.1441 10.6126 10.1441 11.3865 10.6214 11.8638L15.8683 17.1107C16.3455 17.5879 17.1192 17.5879 17.5965 17.1107C18.0737 16.6334 18.0737 15.8597 17.5965 15.3824L14.0778 11.8638C13.6005 11.3865 13.6005 10.6126 14.0778 10.1353L17.5965 6.61667C18.0737 6.13943 18.0737 5.36568 17.5965 4.88844C17.1192 4.41121 16.3455 4.41121 15.8683 4.88844Z"
+                                fill="currentColor" fill-opacity="0.38" />
                         </svg>
-                    </div>
-                    <ul class="main-menu">
-                        <!-- Start::slide__category -->
-                        <li class="slide__category"><span class="category-name">Main</span></li>
-                        <!-- End::slide__category -->
-
-                        <!-- Start::slide -->
-                        <li class="slide  has-sub">
-                            <a href="{% url 'dashboard' %}" class="side-menu__item">
-                                <i class="ri-home-8-line side-menu__icon"></i>
-                                <span class="side-menu__label">Dashboards</span>
-                                <i class="ri ri-arrow-right-s-line side-menu__angle"></i>
-                            </a>
-                            <ul class="slide-menu child1">
-                                <li class="slide side-menu__label1"><a href="javascript:void(0)">Dashboards</a></li>
-                            </ul>
-                        </li>
-                        <!-- End::slide -->
-
-                        <!-- Start::slide -->
-                        <li class="slide has-sub">
-                            <a href="javascript:void(0);" class="side-menu__item">
-                                <i class="ri-restaurant-line"></i>
-                                <span class="side-menu__label">Mill</span>
-                                <i class="ri ri-arrow-right-s-line side-menu__angle"></i>
-                            </a>
-                            <ul class="slide-menu child1">
-                                <li class="slide side-menu__label1"><a href="javascript:void(0)">Add Mill</a></li>
-                                <li class="slide"><a href="{% url 'addmill' %}" class="side-menu__item">Add Mill</a></li>
-                            </ul>
-                        </li>
-                        <!-- End::slide -->
-
-                    </ul>
-                    <div class="slide-right" id="slide-right"><svg xmlns="http://www.w3.org/2000/svg" fill="#7b8191"
-                            width="24" height="24" viewBox="0 0 24 24">
-                            <path d="M10.707 17.707 16.414 12l-5.707-5.707-1.414 1.414L13.586 12l-4.293 4.293z"></path>
-                        </svg></div>
-                </nav>
-                <!-- End::nav -->
-
-            </div>
-            <!-- End::main-sidebar -->
-
-        </aside>
-        <!-- End::app-sidebar -->
-
-        <!-- Start::Header -->
-        <header class="header custom-sticky !top-0 !w-full">
-            <nav class="main-header" aria-label="Global">
-                <div class="header-content">
-                    <div class="header-left">
-                        <!-- Navigation Toggle -->
-                        <div class="">
-                            <button type="button" class="sidebar-toggle !w-100 !h-100">
-                                <span class="sr-only">Toggle Navigation</span>
-                                <i class="ri-arrow-right-circle-line header-icon"></i>
-                            </button>
-                        </div>
-                        <!-- End Navigation Toggle -->
-                    </div>
-
-                    <div class="responsive-logo">
-                        <a class="responsive-logo-dark" href="index.html" aria-label="Brand"><img
-                                src="/static/assets/img/brand-logos/desktop-logo.png" alt="logo" class="mx-auto"></a>
-                        <a class="responsive-logo-light" href="index.html" aria-label="Brand"><img
-                                src="/static/assets/img/brand-logos/desktop-dark.png" alt="logo" class="mx-auto"></a>
-                    </div>
-
-                    <div class="header-right">
-                        <div class="responsive-headernav">
-                            <div class="header-nav-right">
-                                
-                                
-                                <div class="header-theme-mode hidden sm:block">
-                                    <a aria-label="anchor"
-                                        class="hs-dark-mode-active:hidden flex hs-dark-mode group flex-shrink-0 justify-center items-center gap-2 h-[2.375rem] w-[2.375rem] rounded-full font-medium bg-gray-100 hover:bg-gray-200 text-gray-500 align-middle focus:outline-none focus:ring-0 focus:ring-gray-400 focus:ring-offset-0 focus:ring-offset-white transition-all text-xs dark:bg-bgdark dark:hover:bg-black/20 dark:text-white/70 dark:hover:text-white dark:focus:ring-white/10 dark:focus:ring-offset-white/10"
-                                        href="javascript:;" data-hs-theme-click-value="dark">
-                                        <i class="ri-moon-line header-icon"></i>
-                                    </a>
-                                    <a aria-label="anchor"
-                                        class="hs-dark-mode-active:flex hidden hs-dark-mode group flex-shrink-0 justify-center items-center gap-2 h-[2.375rem] w-[2.375rem] rounded-full font-medium bg-gray-100 hover:bg-gray-200 text-gray-500 align-middle focus:outline-none focus:ring-0 focus:ring-gray-400 focus:ring-offset-0 focus:ring-offset-white transition-all text-xs dark:bg-bgdark dark:hover:bg-black/20 dark:text-white/70 dark:hover:text-white dark:focus:ring-white/10 dark:focus:ring-offset-white/10"
-                                        href="javascript:;" data-hs-theme-click-value="light">
-                                        <i class="ri-sun-line header-icon"></i>
-                                    </a>
-                                </div>
-                                <div class="header-fullscreen hidden lg:block">
-                                    <a aria-label="anchor" href="javascript:void(0);" onclick="openFullscreen();"
-                                        class="inline-flex flex-shrink-0 justify-center items-center gap-2 h-[2.375rem] w-[2.375rem] rounded-full font-medium bg-gray-100 hover:bg-gray-200 text-gray-500 align-middle focus:outline-none focus:ring-0 focus:ring-gray-400 focus:ring-offset-0 focus:ring-offset-white transition-all text-xs dark:bg-bgdark dark:hover:bg-black/20 dark:text-white/70 dark:hover:text-white dark:focus:ring-white/10 dark:focus:ring-offset-white/10">
-                                        <i class="ri-fullscreen-line header-icon full-screen-open"></i>
-                                        <i
-                                            class="ri-fullscreen-line header-icon fullscreen-exit-line full-screen-close hidden"></i>
-                                    </a>
-                                </div>
-                                
-                                <div class="header-notification hs-dropdown ti-dropdown hidden sm:block"
-                                    data-hs-dropdown-placement="bottom-right">
-                                    <button id="dropdown-notification" type="button"
-                                        class="hs-dropdown-toggle ti-dropdown-toggle p-0 border-0 flex-shrink-0 h-[2.375rem] w-[2.375rem] rounded-full shadow-none focus:ring-gray-400 text-xs dark:focus:ring-white/10">
-                                        <i class="ri-notification-2-line header-icon animate-bell"></i>
-                                        <span
-                                            class="flex absolute h-5 w-5 top-0 ltr:right-0 rtl:left-0 -mt-1 ltr:-mr-1 rtl:-ml-1">
-                                            <span
-                                                class="animate-ping absolute inline-flex h-full w-full rounded-full bg-success/80 opacity-75"></span>
-                                            <span
-                                                class="relative inline-flex rounded-full h-5 w-5 bg-success text-white justify-center items-center"
-                                                id="notify-data">4</span>
-                                        </span>
-                                    </button>
-                                    <div class="hs-dropdown-menu ti-dropdown-menu w-[20rem] border-0"
-                                        aria-labelledby="dropdown-notification">
-                                        <div
-                                            class="ti-dropdown-header !bg-primary border-b dark:border-white/10 flex justify-between items-center">
-                                            <p class="ti-dropdown-header-title !text-white font-semibold">Notifications
-                                            </p>
-                                            <a href="javascript:void(0)"
-                                                class="badge bg-black/20 text-white rounded-sm">Mark All Read</a>
-                                        </div>
-                                        <div class="ti-dropdown-divider divide-y divide-gray-200 dark:divide-white/10">
-                                            <div class="py-2 first:pt-0 last:pb-0" id="allNotifyContainer">
-                                                <div class="ti-dropdown-item relative header-box">
-                                                    <a href="mail-inbox.html"
-                                                        class="flex space-x-3 rtl:space-x-reverse">
-                                                        <div class="ltr:mr-2 rtl:ml-2 avatar rounded-full ring-0">
-                                                            <img src="/static/assets/img/users/17.jpg" alt="img"
-                                                                class="rounded-sm">
-                                                        </div>
-                                                        <div class="relative w-full">
-                                                            <h5
-                                                                class="text-sm text-gray-800 dark:text-white font-semibold mb-1">
-                                                                Elon Isk</h5>
-                                                            <p class="text-xs mb-1 max-w-[200px] truncate">Hello there!
-                                                                How are you doing? Call me when...</p>
-                                                            <p class="text-xs text-gray-400 dark:text-white/70">2 min
-                                                            </p>
-                                                        </div>
-                                                    </a>
-                                                    <a aria-label="anchor" href="javascript:void(0);"
-                                                        class="header-remove-btn ltr:ml-auto rtl:mr-auto text-lg text-gray-500/20 dark:text-white/20 hover:text-gray-800 dark:hover:text-white">
-                                                        <i class="ri-close-circle-line"></i>
-                                                    </a>
-                                                </div>
-                                                <div class="ti-dropdown-item relative header-box">
-                                                    <a href="mail-inbox.html"
-                                                        class="flex items-center space-x-3 rtl:space-x-reverse">
-                                                        <div class="ltr:mr-2 rtl:ml-2 avatar rounded-full ring-0">
-                                                            <img src="/static/assets/img/users/2.jpg" alt="img"
-                                                                class="rounded-sm">
-                                                        </div>
-                                                        <div class="relative w-full">
-                                                            <h5
-                                                                class="text-sm text-gray-800 dark:text-white font-semibold mb-1">
-                                                                Shakira Sen</h5>
-                                                            <p class="text-xs mb-1 max-w-[200px] truncate">I would like
-                                                                to discuss about that assets...</p>
-                                                            <p class="text-xs text-gray-400 dark:text-white/70">09:43
-                                                            </p>
-                                                        </div>
-                                                    </a>
-                                                    <a aria-label="anchor" href="javascript:void(0);"
-                                                        class="header-remove-btn ltr:ml-auto rtl:mr-auto text-lg text-gray-500/20 dark:text-white/20 hover:text-gray-800 dark:hover:text-white">
-                                                        <i class="ri-close-circle-line"></i>
-                                                    </a>
-                                                </div>
-                                                <div class="ti-dropdown-item relative header-box">
-                                                    <a href="mail-inbox.html"
-                                                        class="flex items-center space-x-3 rtl:space-x-reverse">
-                                                        <div class="ltr:mr-2 rtl:ml-2 avatar rounded-full ring-0">
-                                                            <img src="/static/assets/img/users/21.jpg" alt="img"
-                                                                class="rounded-sm">
-                                                        </div>
-                                                        <div class="relative w-full">
-                                                            <h5
-                                                                class="text-sm text-gray-800 dark:text-white font-semibold mb-1">
-                                                                Sebastian</h5>
-                                                            <p class="text-xs mb-1 max-w-[200px] truncate">Shall we go
-                                                                to the cafe at downtown...</p>
-                                                            <p class="text-xs text-gray-400 dark:text-white/70">
-                                                                yesterday</p>
-                                                        </div>
-                                                    </a>
-                                                    <a aria-label="anchor" href="javascript:void(0);"
-                                                        class="header-remove-btn ltr:ml-auto rtl:mr-auto text-lg text-gray-500/20 dark:text-white/20 hover:text-gray-800 dark:hover:text-white">
-                                                        <i class="ri-close-circle-line"></i>
-                                                    </a>
-                                                </div>
-                                                <div class="ti-dropdown-item relative header-box">
-                                                    <a href="mail-inbox.html"
-                                                        class="flex items-center space-x-3 rtl:space-x-reverse">
-                                                        <div class="ltr:mr-2 rtl:ml-2 avatar rounded-full ring-0">
-                                                            <img src="/static/assets/img/users/11.jpg" alt="img"
-                                                                class="rounded-sm">
-                                                        </div>
-                                                        <div class="relative w-full">
-                                                            <h5
-                                                                class="text-sm text-gray-800 dark:text-white font-semibold mb-1">
-                                                                Charlie Davieson</h5>
-                                                            <p class="text-xs mb-1 max-w-[200px] truncate">Lorem ipsum
-                                                                dolor sit amet, consectetur</p>
-                                                            <p class="text-xs text-gray-400 dark:text-white/70">
-                                                                yesterday</p>
-                                                        </div>
-                                                    </a>
-                                                    <a aria-label="anchor" href="javascript:void(0);"
-                                                        class="header-remove-btn ltr:ml-auto rtl:mr-auto text-lg text-gray-500/20 dark:text-white/20 hover:text-gray-800 dark:hover:text-white">
-                                                        <i class="ri-close-circle-line"></i>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                            <div class="py-2 first:pt-0 px-5">
-                                                <a class="w-full ti-btn ti-btn-primary p-2" href="mail-inbox.html">
-                                                    View All
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                
-
-                                <div class="header-profile hs-dropdown ti-dropdown"
-                                    data-hs-dropdown-placement="bottom-right">
-                                    <button id="dropdown-profile" type="button" class="hs-dropdown-toggle ti-dropdown-toggle gap-2 p-0 flex-shrink-0 h-8 w-8 rounded-full shadow-none focus:ring-gray-400 text-xs dark:focus:ring-white/10">
-                                        <img class="inline-block rounded-full ring-2 ring-white dark:ring-white/10" src="/static/assets/img/users/1.jpg" alt="Image Description">
-                                    </button>
-
-                                    <div class="hs-dropdown-menu ti-dropdown-menu border-0 w-[20rem]" aria-labelledby="dropdown-profile">
-                                        <div class="ti-dropdown-header !bg-primary flex">
-                                            <div class="ltr:mr-3 rtl:ml-3">
-                                                <img class="avatar shadow-none rounded-full !ring-transparent" src="/static/assets/img/users/1.jpg" alt="profile-img">
-                                            </div>
-                                            <div>
-                                                <p class="ti-dropdown-header-title !text-white">{{ request.user.first_name }} {{ request.user.first_name }}</p>
-                                                <p class="ti-dropdown-header-content !text-white/50">Web Designer</p>
-                                            </div>
-                                        </div>
-                                        <div class="mt-2 ti-dropdown-divider">
-                                            <a href="profile.html" class="ti-dropdown-item">
-                                                <i class="ti ti-user-circle text-lg"></i>
-                                                Profile
-                                            </a>
-                                            
-                                            <a href="{% url 'logout' %}" class="ti-dropdown-item"><i class="ti ti-logout  text-lg"></i>Log Out</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                {% comment %} <div class="switcher-icon">
-                                    <button aria-label="button" type="button"
-                                        class="hs-dropdown-toggle inline-flex flex-shrink-0 justify-center items-center gap-2 h-[2.375rem] w-[2.375rem] rounded-full font-medium bg-gray-100 hover:bg-gray-200 text-gray-500 align-middle focus:outline-none focus-visible:outline-none focus:ring-0 focus:ring-gray-400 focus:ring-offset-0 focus:ring-offset-white transition-all text-xs dark:bg-bgdark dark:hover:bg-black/20 dark:text-white/70 dark:hover:text-white dark:focus:ring-white/10 dark:focus:ring-offset-white/10"
-                                        data-hs-overlay="#hs-overlay-switcher">
-                                        <i class="ri-settings-5-line header-icon animate-spin"></i>
-                                    </button>
-                                </div> {% endcomment %}
-                            </div>
-                        </div>
-                    </div>
+                    </a>
                 </div>
-            </nav>
-        </header>
-        <!-- End::Header -->
 
+                <div class="menu-inner-shadow"></div>
 
-        {% block 'content' %}{% endblock 'content' %}
+                <ul class="menu-inner py-1">
+                    <!-- Dashboards -->
+                    <li class="menu-item{% if request.resolver_match.url_name == 'dashboard' %} active open{% endif %}">
+                        <a href="javascript:void(0);" class="menu-link menu-toggle">
+                            <i class="menu-icon tf-icons mdi mdi-monitor-dashboard"></i>
+                            <div data-i18n="Dashboard">Dashboard</div>
+                        </a>
 
+                        <ul class="menu-sub">
+                            <li class="menu-item{% if request.resolver_match.url_name == 'dashboard' %} active{% endif %}">
+                                <a href="{% url 'dashboard' %}" class="menu-link">
+                                    <div data-i18n="Dashboard">Dashboard</div>
+                                </a>
+                            </li>
+                            
+                        </ul>
+                    </li>
 
-        <!-- ========== Search Modal ========== -->
-        <div id="search-modal" class="hs-overlay ti-modal hidden">
-            <div class="ti-modal-box">
-                <div class="ti-modal-content">
-                    <div class="ti-modal-body">
-                        <div class="header-search">
-                            <label for="icon" class="sr-only">Search</label>
-                            <div class="relative">
-                                <div class="search-btn">
-                                    <i class="ri ri-search-2-line search-btn-icon"></i>
-                                </div>
-                                <input type="text" id="icon" name="icon"
-                                    class="py-2 ltr:pl-11 rtl:pr-11 ti-form-input focus:z-10" placeholder="Search">
-                                <div class="voice-search">
-                                    <i class="ri ri-mic-2-line voice-btn-icon"></i>
-                                </div>
-                                <div class="search-dropdown">
-                                    <i class="ri ri-more-2-line search-dropdown-btn-icon"></i>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="mt-5">
-                            <p class="font-semibold text-[13px] text-gray-400 dark:text-gray-200 mb-2">Are You Looking
-                                For...</p>
-                            <div class="badge rounded-sm bg-secondary/20 text-secondary relative header-box">
-                                <a href="team.html"
-                                    class="w-full my-auto items-center flex space-x-2 rtl:space-x-reverse">
-                                    <span class="inline-block text-secondary ltr:mr-1 rtl:ml-1"><i
-                                            class="ri ri-user-line text-sm"></i></span>
-                                    Team
+                    <!-- Layouts -->
+                    <li class="menu-item{% if request.resolver_match.url_name == 'addmill' %} active open{% endif %}">
+                        <a href="javascript:void(0);" class="menu-link menu-toggle">
+                            <i class="menu-icon tf-icons mdi mdi-silverware-fork-knife"></i>
+                            <div data-i18n="Mill">Mill</div>
+                        </a>
+
+                        <ul class="menu-sub">
+                            <li class="menu-item{% if request.resolver_match.url_name == 'addmill' %} active open{% endif %}">
+                                <a href="{% url 'addmill' %}" class="menu-link">
+                                    <div data-i18n="Add Mill">Add Mill</div>
                                 </a>
-                                <a href="javascript:void(0);"
-                                    class="header-remove-btn flex-shrink-0 h-4 w-4 inline-flex items-center justify-center rounded-full text-secondary hover:bg-secondary hover:text-secondary focus:outline-none focus:bg-secondary focus:text-white">
-                                    <span class="sr-only">Remove badge</span>
-                                    <svg class="h-4 w-4 hover:fill-white" xmlns="http://www.w3.org/2000/svg" width="16"
-                                        height="16" fill="currentColor" viewBox="0 0 16 16">
-                                        <path
-                                            d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z">
-                                        </path>
-                                    </svg>
+                            </li>
+                            
+                        </ul>
+                    </li>
+
+                    <li class="menu-item{% if request.resolver_match.url_name == 'diposits' %} active open{% endif %}">
+                        <a href="javascript:void(0);" class="menu-link menu-toggle">
+                            <i class="menu-icon tf-icons mdi mdi-cash-check"></i>
+                            <div data-i18n="Diposit">Diposit</div>
+                        </a>
+
+                        <ul class="menu-sub">
+                            <li class="menu-item{% if request.resolver_match.url_name == 'diposits' %} active open{% endif %}">
+                                <a href="{% url 'diposits' %}" class="menu-link">
+                                    <div data-i18n="Diposits">Diposits</div>
                                 </a>
-                            </div>
-                            <div class="badge rounded-sm bg-secondary/20 text-secondary relative header-box">
-                                <a href="form-elements.html"
-                                    class="w-full my-auto items-center flex space-x-2 rtl:space-x-reverse">
-                                    <span class="inline-block text-secondary ltr:mr-1 rtl:ml-1"><i
-                                            class="ri ri-file-text-line text-sm"></i></span>
-                                    Forms
+                            </li>
+                            <li class="menu-item{% if request.resolver_match.url_name == 'adddiposits' %} active open{% endif %}">
+                                <a href="{% url 'adddiposits' %}" class="menu-link">
+                                    <div data-i18n="Add Diposit">Add Diposits</div>
                                 </a>
-                                <a href="javascript:void(0);"
-                                    class="header-remove-btn flex-shrink-0 h-4 w-4 inline-flex items-center justify-center rounded-full text-secondary hover:bg-secondary hover:text-secondary focus:outline-none focus:bg-secondary focus:text-white">
-                                    <span class="sr-only">Remove badge</span>
-                                    <svg class="h-4 w-4 hover:fill-white" xmlns="http://www.w3.org/2000/svg" width="16"
-                                        height="16" fill="currentColor" viewBox="0 0 16 16">
-                                        <path
-                                            d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z">
-                                        </path>
-                                    </svg>
+                            </li>
+                        </ul>
+                    </li>
+
+                    {% comment %} <li class="menu-item{% if request.resolver_match.url_name == 'diposits' %} active open{% endif %}">
+                        <a href="javascript:void(0);" class="menu-link menu-toggle">
+                            <i class="menu-icon tf-icons mdi mdi-cash-check"></i>
+                            <div data-i18n="Expenditure">Expenditure</div>
+                        </a>
+
+                        <ul class="menu-sub">
+                            <li class="menu-item{% if request.resolver_match.url_name == 'diposits' %} active open{% endif %}">
+                                <a href="{% url 'diposits' %}" class="menu-link">
+                                    <div data-i18n="Diposits">Expenditures</div>
                                 </a>
-                            </div>
-                            <div class="badge rounded-sm bg-secondary/20 text-secondary relative header-box">
-                                <a href="vector-maps.html"
-                                    class="w-full my-auto items-center flex space-x-2 rtl:space-x-reverse">
-                                    <span class="inline-block text-secondary ltr:mr-1 rtl:ml-1"><i
-                                            class="ri ri-map-pin-line text-sm"></i></span>
-                                    Maps
+                            </li>
+                            <li class="menu-item{% if request.resolver_match.url_name == 'adddiposits' %} active open{% endif %}">
+                                <a href="{% url 'adddiposits' %}" class="menu-link">
+                                    <div data-i18n="Add Diposit">Add Diposits</div>
                                 </a>
-                                <a href="javascript:void(0);"
-                                    class="header-remove-btn flex-shrink-0 h-4 w-4 inline-flex items-center justify-center rounded-full text-secondary hover:bg-secondary hover:text-secondary focus:outline-none focus:bg-secondary focus:text-white">
-                                    <span class="sr-only">Remove badge</span>
-                                    <svg class="h-4 w-4 hover:fill-white" xmlns="http://www.w3.org/2000/svg" width="16"
-                                        height="16" fill="currentColor" viewBox="0 0 16 16">
-                                        <path
-                                            d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z">
-                                        </path>
-                                    </svg>
-                                </a>
-                            </div>
-                            <div class="badge rounded-sm bg-secondary/20 text-secondary relative header-box">
-                                <a href="widgets.html"
-                                    class="w-full my-auto items-center flex space-x-2 rtl:space-x-reverse">
-                                    <span class="inline-block text-secondary ltr:mr-1 rtl:ml-1"><i
-                                            class="ri ri-server-line text-sm"></i></span>
-                                    Widgets
-                                </a>
-                                <a href="javascript:void(0);"
-                                    class="header-remove-btn flex-shrink-0 h-4 w-4 inline-flex items-center justify-center rounded-full text-secondary hover:bg-secondary hover:text-secondary focus:outline-none focus:bg-secondary focus:text-white">
-                                    <span class="sr-only">Remove badge</span>
-                                    <svg class="h-4 w-4 hover:fill-white" xmlns="http://www.w3.org/2000/svg" width="16"
-                                        height="16" fill="currentColor" viewBox="0 0 16 16">
-                                        <path
-                                            d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z">
-                                        </path>
-                                    </svg>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="mt-5">
-                            <p class="font-semibold text-sm text-gray-500 mb-2">Recent Search :</p>
-                            <div
-                                class="p-2 border dark:border-white/10 rounded-sm flex items-center text-gray-500 mb-1 relative header-box">
-                                <a href="notifications.html" class="w-full my-auto items-center flex">
-                                    <span class="text-sm">Notifications</span>
-                                </a>
-                                <a aria-label="anchor" href="javascript:void(0);"
-                                    class="ltr:ml-auto rtl:mr-auto flex-shrink-0 h-4 w-4 inline-flex items-center justify-center rounded-full text-gray-500 focus:outline-none header-remove-btn">
-                                    <i class="ri-close-line"></i>
-                                </a>
-                            </div>
-                            <div
-                                class="p-2 border dark:border-white/10 rounded-sm flex items-center text-gray-500 mb-1 relative header-box">
-                                <a href="alerts.html" class="w-full my-auto items-center flex">
-                                    <span class="text-sm">Alerts</span>
-                                </a>
-                                <a aria-label="anchor" href="javascript:void(0);"
-                                    class="ltr:ml-auto rtl:mr-auto flex-shrink-0 h-4 w-4 inline-flex items-center justify-center rounded-full text-gray-500 focus:outline-none header-remove-btn">
-                                    <i class="ri-close-line"></i>
-                                </a>
-                            </div>
-                            <div
-                                class="p-2 border dark:border-white/10 rounded-sm flex items-center text-gray-500 relative header-box">
-                                <a href="tables.html" class="w-full my-auto items-center flex">
-                                    <span class="text-sm">Tables</span>
-                                </a>
-                                <a aria-label="anchor" href="javascript:void(0);"
-                                    class="ltr:ml-auto rtl:mr-auto flex-shrink-0 h-4 w-4 inline-flex items-center justify-center rounded-full text-gray-500 focus:outline-none header-remove-btn">
-                                    <i class="ri-close-line"></i>
-                                </a>
-                            </div>
-                        </div>
+                            </li>
+                        </ul>
+                    </li> {% endcomment %}
+
+                </ul>
+            </aside>
+            <div class="layout-page">
+                <!-- Navbar -->
+                <nav class="layout-navbar container-xxl navbar navbar-expand-xl navbar-detached align-items-center bg-navbar-theme"
+                    id="layout-navbar">
+                    <div class="layout-menu-toggle navbar-nav align-items-xl-center me-3 me-xl-0 d-xl-none">
+                        <a class="nav-item nav-link px-0 me-xl-4" href="javascript:void(0)">
+                            <i class="mdi mdi-menu mdi-24px"></i>
+                        </a>
                     </div>
-                    <div class="ti-modal-footer">
-                        <div class="inline-flex rounded-md shadow-sm">
-                            <button type="button" class="ti-btn-group py-1 ti-btn-soft-primary dark:border-white/10">
-                                Search
-                            </button>
-                            <button type="button" class="ti-btn-group py-1 ti-btn-primary dark:border-white/10">
-                                Clear Recents
-                            </button>
+
+                    <div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
+                        <!-- Search -->
+                        <div class="navbar-nav align-items-center">
+                            <div class="nav-item navbar-search-wrapper mb-0">
+                                <a class="nav-item nav-link search-toggler fw-normal px-0" href="javascript:void(0);">
+                                    <i class="mdi mdi-magnify mdi-24px scaleX-n1-rtl"></i>
+                                    <span class="d-none d-md-inline-block text-muted">Search (Ctrl+/)</span>
+                                </a>
+                            </div>
                         </div>
+                        <!-- /Search -->
+
+                        <ul class="navbar-nav flex-row align-items-center ms-auto">
+                            <!-- Style Switcher -->
+                            <li class="nav-item dropdown-style-switcher dropdown me-2 me-xl-0">
+                                <a class="nav-link btn btn-text-secondary rounded-pill btn-icon dropdown-toggle hide-arrow"
+                                    href="javascript:void(0);" data-bs-toggle="dropdown">
+                                    <i class="mdi mdi-24px"></i>
+                                </a>
+                                <ul class="dropdown-menu dropdown-menu-end dropdown-styles">
+                                    <li>
+                                        <a class="dropdown-item" href="javascript:void(0);" data-theme="light">
+                                            <span class="align-middle"><i
+                                                    class="mdi mdi-weather-sunny me-2"></i>Light</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" href="javascript:void(0);" data-theme="dark">
+                                            <span class="align-middle"><i
+                                                    class="mdi mdi-weather-night me-2"></i>Dark</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" href="javascript:void(0);" data-theme="system">
+                                            <span class="align-middle"><i class="mdi mdi-monitor me-2"></i>System</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                                <!-- / Style Switcher-->
+
+                                <!-- Quick links  -->
+                            </li>
+
+                            {% comment %} <li class="nav-item dropdown-shortcuts navbar-dropdown dropdown me-1 me-xl-0">
+                                <a class="nav-link btn btn-text-secondary rounded-pill btn-icon dropdown-toggle hide-arrow"
+                                    href="javascript:void(0);" data-bs-toggle="dropdown" data-bs-auto-close="outside"
+                                    aria-expanded="false">
+                                    <i class="mdi mdi-view-grid-plus-outline mdi-24px"></i>
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-end py-0">
+                                    <div class="dropdown-menu-header border-bottom">
+                                        <div class="dropdown-header d-flex align-items-center py-3">
+                                            <h5 class="text-body mb-0 me-auto">Shortcuts</h5>
+                                            <a href="javascript:void(0)" class="dropdown-shortcuts-add text-muted"
+                                                data-bs-toggle="tooltip" data-bs-placement="top"
+                                                title="Add shortcuts"><i
+                                                    class="mdi mdi-view-grid-plus-outline mdi-24px"></i></a>
+                                        </div>
+                                    </div>
+                                    <div class="dropdown-shortcuts-list scrollable-container">
+                                        <div class="row row-bordered overflow-visible g-0">
+                                            <div class="dropdown-shortcuts-item col">
+                                                <span
+                                                    class="dropdown-shortcuts-icon bg-label-secondary rounded-circle mb-2">
+                                                    <i class="mdi mdi-calendar fs-4"></i>
+                                                </span>
+                                                <a href="app-calendar.html" class="stretched-link">Calendar</a>
+                                                <small class="text-muted mb-0">Appointments</small>
+                                            </div>
+                                            <div class="dropdown-shortcuts-item col">
+                                                <span
+                                                    class="dropdown-shortcuts-icon bg-label-secondary rounded-circle mb-2">
+                                                    <i class="mdi mdi-file-document-outline fs-4"></i>
+                                                </span>
+                                                <a href="app-invoice-list.html" class="stretched-link">Invoice App</a>
+                                                <small class="text-muted mb-0">Manage Accounts</small>
+                                            </div>
+                                        </div>
+                                        <div class="row row-bordered overflow-visible g-0">
+                                            <div class="dropdown-shortcuts-item col">
+                                                <span
+                                                    class="dropdown-shortcuts-icon bg-label-secondary rounded-circle mb-2">
+                                                    <i class="mdi mdi-account-outline fs-4"></i>
+                                                </span>
+                                                <a href="app-user-list.html" class="stretched-link">User App</a>
+                                                <small class="text-muted mb-0">Manage Users</small>
+                                            </div>
+                                            <div class="dropdown-shortcuts-item col">
+                                                <span
+                                                    class="dropdown-shortcuts-icon bg-label-secondary rounded-circle mb-2">
+                                                    <i class="mdi mdi-shield-check-outline fs-4"></i>
+                                                </span>
+                                                <a href="app-access-roles.html" class="stretched-link">Role
+                                                    Management</a>
+                                                <small class="text-muted mb-0">Permission</small>
+                                            </div>
+                                        </div>
+                                        <div class="row row-bordered overflow-visible g-0">
+                                            <div class="dropdown-shortcuts-item col">
+                                                <span
+                                                    class="dropdown-shortcuts-icon bg-label-secondary rounded-circle mb-2">
+                                                    <i class="mdi mdi-chart-pie-outline fs-4"></i>
+                                                </span>
+                                                <a href="index.html" class="stretched-link">Dashboard</a>
+                                                <small class="text-muted mb-0">Analytics</small>
+                                            </div>
+                                            <div class="dropdown-shortcuts-item col">
+                                                <span
+                                                    class="dropdown-shortcuts-icon bg-label-secondary rounded-circle mb-2">
+                                                    <i class="mdi mdi-cog-outline fs-4"></i>
+                                                </span>
+                                                <a href="pages-account-settings-account.html"
+                                                    class="stretched-link">Setting</a>
+                                                <small class="text-muted mb-0">Account Settings</small>
+                                            </div>
+                                        </div>
+                                        <div class="row row-bordered overflow-visible g-0">
+                                            <div class="dropdown-shortcuts-item col">
+                                                <span
+                                                    class="dropdown-shortcuts-icon bg-label-secondary rounded-circle mb-2">
+                                                    <i class="mdi mdi-help-circle-outline fs-4"></i>
+                                                </span>
+                                                <a href="pages-faq.html" class="stretched-link">FAQs</a>
+                                                <small class="text-muted mb-0">FAQs & Articles</small>
+                                            </div>
+                                            <div class="dropdown-shortcuts-item col">
+                                                <span
+                                                    class="dropdown-shortcuts-icon bg-label-secondary rounded-circle mb-2">
+                                                    <i class="mdi mdi-dock-window fs-4"></i>
+                                                </span>
+                                                <a href="modal-examples.html" class="stretched-link">Modals</a>
+                                                <small class="text-muted mb-0">Useful Popups</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li> {% endcomment %}
+                            <!-- Quick links -->
+
+                            <!-- Notification -->
+                            <li class="nav-item dropdown-notifications navbar-dropdown dropdown me-2 me-xl-1">
+                                <a class="nav-link btn btn-text-secondary rounded-pill btn-icon dropdown-toggle hide-arrow"
+                                    href="javascript:void(0);" data-bs-toggle="dropdown" data-bs-auto-close="outside"
+                                    aria-expanded="false">
+                                    <i class="mdi mdi-bell-outline mdi-24px"></i>
+                                    <span
+                                        class="position-absolute top-0 start-50 translate-middle-y badge badge-dot bg-danger mt-2 border"></span>
+                                </a>
+                                <ul class="dropdown-menu dropdown-menu-end py-0">
+                                    <li class="dropdown-menu-header border-bottom">
+                                        <div class="dropdown-header d-flex align-items-center py-3">
+                                            <h6 class="mb-0 me-auto">Notification</h6>
+                                            <span class="badge rounded-pill bg-label-primary">8 New</span>
+                                        </div>
+                                    </li>
+                                    <li class="dropdown-notifications-list scrollable-container">
+                                        <ul class="list-group list-group-flush">
+                                            <li
+                                                class="list-group-item list-group-item-action dropdown-notifications-item">
+                                                <div class="d-flex gap-2">
+                                                    <div class="flex-shrink-0">
+                                                        <div class="avatar me-1">
+                                                            <img src="/static/assets/img/avatars/1.png" alt
+                                                                class="w-px-40 h-auto rounded-circle" />
+                                                        </div>
+                                                    </div>
+                                                    <div
+                                                        class="d-flex flex-column flex-grow-1 overflow-hidden w-px-200">
+                                                        <h6 class="mb-1 text-truncate">Congratulation Lettie 🎉</h6>
+                                                        <small class="text-truncate text-body">Won the monthly best
+                                                            seller gold badge</small>
+                                                    </div>
+                                                    <div class="flex-shrink-0 dropdown-notifications-actions">
+                                                        <small class="text-muted">1h ago</small>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li
+                                                class="list-group-item list-group-item-action dropdown-notifications-item">
+                                                <div class="d-flex gap-2">
+                                                    <div class="flex-shrink-0">
+                                                        <div class="avatar me-1">
+                                                            <span
+                                                                class="avatar-initial rounded-circle bg-label-danger">CF</span>
+                                                        </div>
+                                                    </div>
+                                                    <div
+                                                        class="d-flex flex-column flex-grow-1 overflow-hidden w-px-200">
+                                                        <h6 class="mb-1 text-truncate">Charles Franklin</h6>
+                                                        <small class="text-truncate text-body">Accepted your
+                                                            connection</small>
+                                                    </div>
+                                                    <div class="flex-shrink-0 dropdown-notifications-actions">
+                                                        <small class="text-muted">12hr ago</small>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li
+                                                class="list-group-item list-group-item-action dropdown-notifications-item marked-as-read">
+                                                <div class="d-flex gap-2">
+                                                    <div class="flex-shrink-0">
+                                                        <div class="avatar me-1">
+                                                            <img src="/static/assets/img/avatars/2.png" alt
+                                                                class="w-px-40 h-auto rounded-circle" />
+                                                        </div>
+                                                    </div>
+                                                    <div
+                                                        class="d-flex flex-column flex-grow-1 overflow-hidden w-px-200">
+                                                        <h6 class="mb-1 text-truncate">New Message ✉️</h6>
+                                                        <small class="text-truncate text-body">You have new message from
+                                                            Natalie</small>
+                                                    </div>
+                                                    <div class="flex-shrink-0 dropdown-notifications-actions">
+                                                        <small class="text-muted">1h ago</small>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li
+                                                class="list-group-item list-group-item-action dropdown-notifications-item">
+                                                <div class="d-flex gap-2">
+                                                    <div class="flex-shrink-0">
+                                                        <div class="avatar me-1">
+                                                            <span
+                                                                class="avatar-initial rounded-circle bg-label-success"><i
+                                                                    class="mdi mdi-cart-outline"></i></span>
+                                                        </div>
+                                                    </div>
+                                                    <div
+                                                        class="d-flex flex-column flex-grow-1 overflow-hidden w-px-200">
+                                                        <h6 class="mb-1 text-truncate">Whoo! You have new order 🛒</h6>
+                                                        <small class="text-truncate text-body">ACME Inc. made new order
+                                                            $1,154</small>
+                                                    </div>
+                                                    <div class="flex-shrink-0 dropdown-notifications-actions">
+                                                        <small class="text-muted">1 day ago</small>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li
+                                                class="list-group-item list-group-item-action dropdown-notifications-item marked-as-read">
+                                                <div class="d-flex gap-2">
+                                                    <div class="flex-shrink-0">
+                                                        <div class="avatar me-1">
+                                                            <img src="/static/assets/img/avatars/9.png" alt
+                                                                class="w-px-40 h-auto rounded-circle" />
+                                                        </div>
+                                                    </div>
+                                                    <div
+                                                        class="d-flex flex-column flex-grow-1 overflow-hidden w-px-200">
+                                                        <h6 class="mb-1 text-truncate">Application has been approved 🚀
+                                                        </h6>
+                                                        <small class="text-truncate text-body">Your ABC project
+                                                            application has been approved.</small>
+                                                    </div>
+                                                    <div class="flex-shrink-0 dropdown-notifications-actions">
+                                                        <small class="text-muted">2 days ago</small>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li
+                                                class="list-group-item list-group-item-action dropdown-notifications-item marked-as-read">
+                                                <div class="d-flex gap-2">
+                                                    <div class="flex-shrink-0">
+                                                        <div class="avatar me-1">
+                                                            <span
+                                                                class="avatar-initial rounded-circle bg-label-success"><i
+                                                                    class="mdi mdi-chart-pie-outline"></i></span>
+                                                        </div>
+                                                    </div>
+                                                    <div
+                                                        class="d-flex flex-column flex-grow-1 overflow-hidden w-px-200">
+                                                        <h6 class="mb-1 text-truncate">Monthly report is generated</h6>
+                                                        <small class="text-truncate text-body">July monthly financial
+                                                            report is generated </small>
+                                                    </div>
+                                                    <div class="flex-shrink-0 dropdown-notifications-actions">
+                                                        <small class="text-muted">3 days ago</small>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li
+                                                class="list-group-item list-group-item-action dropdown-notifications-item marked-as-read">
+                                                <div class="d-flex gap-2">
+                                                    <div class="flex-shrink-0">
+                                                        <div class="avatar me-1">
+                                                            <img src="/static/assets/img/avatars/5.png" alt
+                                                                class="w-px-40 h-auto rounded-circle" />
+                                                        </div>
+                                                    </div>
+                                                    <div
+                                                        class="d-flex flex-column flex-grow-1 overflow-hidden w-px-200">
+                                                        <h6 class="mb-1 text-truncate">Send connection request</h6>
+                                                        <small class="text-truncate text-body">Peter sent you connection
+                                                            request</small>
+                                                    </div>
+                                                    <div class="flex-shrink-0 dropdown-notifications-actions">
+                                                        <small class="text-muted">4 days ago</small>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li
+                                                class="list-group-item list-group-item-action dropdown-notifications-item">
+                                                <div class="d-flex gap-2">
+                                                    <div class="flex-shrink-0">
+                                                        <div class="avatar me-1">
+                                                            <img src="/static/assets/img/avatars/6.png" alt
+                                                                class="w-px-40 h-auto rounded-circle" />
+                                                        </div>
+                                                    </div>
+                                                    <div
+                                                        class="d-flex flex-column flex-grow-1 overflow-hidden w-px-200">
+                                                        <h6 class="mb-1 text-truncate">New message from Jane</h6>
+                                                        <small class="text-truncate text-body">Your have new message
+                                                            from Jane</small>
+                                                    </div>
+                                                    <div class="flex-shrink-0 dropdown-notifications-actions">
+                                                        <small class="text-muted">5 days ago</small>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li
+                                                class="list-group-item list-group-item-action dropdown-notifications-item marked-as-read">
+                                                <div class="d-flex gap-2">
+                                                    <div class="flex-shrink-0">
+                                                        <div class="avatar me-1">
+                                                            <span
+                                                                class="avatar-initial rounded-circle bg-label-warning"><i
+                                                                    class="mdi mdi-alert-circle-outline"></i></span>
+                                                        </div>
+                                                    </div>
+                                                    <div
+                                                        class="d-flex flex-column flex-grow-1 overflow-hidden w-px-200">
+                                                        <h6 class="mb-1">CPU is running high</h6>
+                                                        <small class="text-truncate text-body">CPU Utilization Percent
+                                                            is currently at 88.63%,</small>
+                                                    </div>
+                                                    <div class="flex-shrink-0 dropdown-notifications-actions">
+                                                        <small class="text-muted">5 days ago</small>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li class="dropdown-menu-footer border-top p-2">
+                                        <a href="javascript:void(0);"
+                                            class="btn btn-primary d-flex justify-content-center">
+                                            View all notifications
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <!--/ Notification -->
+
+                            <!-- User -->
+                            <li class="nav-item navbar-dropdown dropdown-user dropdown">
+                                <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
+                                    <div class="avatar avatar-online">
+                                        <img src="/static/assets/img/avatars/1.png" alt class="w-px-40 h-auto rounded-circle" />
+                                    </div>
+                                </a>
+                                <ul class="dropdown-menu dropdown-menu-end">
+                                    <li>
+                                        <a class="dropdown-item" href="pages-account-settings-account.html">
+                                            <div class="d-flex">
+                                                <div class="flex-shrink-0 me-3">
+                                                    <div class="avatar avatar-online">
+                                                        <img src="/static/assets/img/avatars/1.png" alt class="w-px-40 h-auto rounded-circle" />
+                                                    </div>
+                                                </div>
+                                                <div class="flex-grow-1">
+                                                    <span class="fw-medium d-block">{{ request.user.first_name }} {{ request.user.last_name }}</span>
+                                                    <small class="text-muted">Admin</small>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <div class="dropdown-divider"></div>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" href="pages-profile-user.html">
+                                            <i class="mdi mdi-account-outline me-2"></i>
+                                            <span class="align-middle">My Profile</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" href="pages-account-settings-account.html">
+                                            <i class="mdi mdi-cog-outline me-2"></i>
+                                            <span class="align-middle">Settings</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" href="pages-account-settings-billing.html">
+                                            <span class="d-flex align-items-center align-middle">
+                                                <i class="flex-shrink-0 mdi mdi-credit-card-outline me-2"></i>
+                                                <span class="flex-grow-1 align-middle">Billing</span>
+                                                <span
+                                                    class="flex-shrink-0 badge badge-center rounded-pill bg-danger w-px-20 h-px-20">4</span>
+                                            </span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <div class="dropdown-divider"></div>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" href="pages-faq.html">
+                                            <i class="mdi mdi-help-circle-outline me-2"></i>
+                                            <span class="align-middle">FAQ</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" href="pages-pricing.html">
+                                            <i class="mdi mdi-currency-usd me-2"></i>
+                                            <span class="align-middle">Pricing</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <div class="dropdown-divider"></div>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" href="auth-login-cover.html" target="_blank">
+                                            <i class="mdi mdi-logout me-2"></i>
+                                            <span class="align-middle">Log Out</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <!--/ User -->
+                        </ul>
                     </div>
+
+                    <!-- Search Small Screens -->
+                    <div class="navbar-search-wrapper search-input-wrapper d-none">
+                        <input type="text" class="form-control search-input container-xxl border-0"
+                            placeholder="Search..." aria-label="Search..." />
+                        <i class="mdi mdi-close search-toggler cursor-pointer"></i>
+                    </div>
+                </nav>
+                <!-- / Navbar -->
+                <div class="content-wrapper">
+                    <!-- Content -->
+                    {% block 'content' %}{% endblock 'content' %}
+                    <!-- / Content -->
+                    <!-- Footer -->
+                    <footer class="content-footer footer bg-footer-theme">
+                        <div class="container-xxl">
+                            <div class="footer-container d-flex align-items-center justify-content-between py-3 flex-md-row flex-column">
+                                <div class="mb-2 mb-md-0">
+                                    ©<script>document.write(new Date().getFullYear());</script><span class="text-danger"><i class="tf-icons mdi mdi-heart"></i></span>All Rights Reserved 
+                                </div>
+                            </div>
+                        </div>
+                    </footer>
+                    <!-- / Footer -->
+                    <div class="content-backdrop fade"></div>
                 </div>
             </div>
         </div>
-        <!-- ========== END Search Modal ========== -->
 
-        <footer class="mt-auto py-3 border-t dark:border-white/10 bg-white dark:bg-bgdark">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <p class="text-center">Copyright © <span id="year"></span> All rights reserved </p>
-            </div>
-        </footer>
+        <!-- Overlay -->
+        <div class="layout-overlay layout-menu-toggle"></div>
 
-
+        <!-- Drag Target Area To SlideIn Menu On Small Screens -->
+        <div class="drag-target"></div>
     </div>
+    <!-- / Layout wrapper -->
 
+    <!-- Core JS -->
+    <!-- build:js assets/vendor/js/core.js -->
+    <script src="/static/assets/vendor/libs/jquery/jquery.js"></script>
+    <script src="/static/assets/vendor/libs/popper/popper.js"></script>
+    <script src="/static/assets/vendor/js/bootstrap.js"></script>
+    <script src="/static/assets/vendor/libs/node-waves/node-waves.js"></script>
+    <script src="/static/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
+    <script src="/static/assets/vendor/libs/hammer/hammer.js"></script>
+    <script src="/static/assets/vendor/libs/i18n/i18n.js"></script>
+    <script src="/static/assets/vendor/libs/typeahead-js/typeahead.js"></script>
+    <script src="/static/assets/vendor/js/menu.js"></script>
+    <!-- endbuild -->
 
-    <!-- Apex Charts JS -->
-    <script src="{% static 'assets/libs/apexcharts/apexcharts.min.js' %}"></script>
-    <!-- Chartjs Chart JS -->
-    <script src="{% static 'assets/libs/chart.js/chart.min.js' %}"></script>
-    <!-- Index JS -->
-    <script src="{% static 'assets/js/index.js' %}"></script>
-    <!-- Back To Top -->
-    <div class="scrollToTop"><span class="arrow"><i class="ri-arrow-up-s-fill text-xl"></i></span></div>
-    <div id="responsive-overlay"></div>
-    <!-- popperjs -->
-    <script src="{% static 'assets/libs/@popperjs/core/umd/popper.min.js' %}"></script>
-    <!-- Color Picker JS -->
-    <script src="{% static 'assets/libs/simonwep/pickr/pickr.es5.min.js' %}"></script>
-    <!-- sidebar JS -->
-    <script src="{% static 'assets/js/defaultmenu.js' %}"></script>
-    <!-- sticky JS -->
-    <script src="{% static 'assets/js/sticky.js' %}"></script>
-    <!-- Switch JS -->
-    <script src="{% static 'assets/js/switch.js' %}"></script>
-    <!-- Preline JS -->
-    <script src="{% static 'assets/libs/preline/preline.js' %}"></script>
-    <!-- Simplebar JS -->
-    <script src="{% static 'assets/libs/simplebar/simplebar.min.js' %}"></script>
-    <!-- Custom JS -->
-    <script src="{% static 'assets/js/custom.js' %}"></script>
-    <!-- Custom-Switcher JS -->
-    <script src="{% static 'assets/js/custom-switcher.js' %}"></script>
+    <!-- Vendors JS -->
+    <script src="/static/assets/vendor/libs/apex-charts/apexcharts.js"></script>
+    <script src="/static/assets/vendor/libs/swiper/swiper.js"></script>
+    <script src="/static/assets/vendor/libs/moment/moment.js"></script>
+    <script src="/static/assets/vendor/libs/flatpickr/flatpickr.js"></script>
+    <script src="/static/assets/vendor/libs/bootstrap-datepicker/bootstrap-datepicker.js"></script>
+    {% comment %} <script src="/static/assets/vendor/libs/bootstrap-daterangepicker/bootstrap-daterangepicker.js"></script> {% endcomment %}
+    <script src="/static/assets/vendor/libs/jquery-timepicker/jquery-timepicker.js"></script>
+    <script src="/static/assets/vendor/libs/pickr/pickr.js"></script>
 
-    <!-- Flatpickr JS -->
-    <script src="{% static 'assets/libs/flatpickr/flatpickr.min.js' %}"></script>
-    <script src="{% static 'assets/js/flatpickr.js' %}"></script>
+    <!-- Main JS -->
+    <script src="/static/assets/js/main.js"></script>
 
-    <!-- Color Picker JS -->
-    <script src="{% static 'assets/libs/simonwep/pickr/pickr.es5.min.js' %}"></script>
-    <script src="{% static 'assets/js/colorpicker.js' %}"></script>
-    {% comment %} <script>
-         $(document).ready(function() {
-            
-            $("#mill-form").submit(function(event) {
-                event.preventDefault();  // Prevent the default form submission
-
-                var formData = $(this).serialize();
-
-                $.ajax({
-                    type: "POST",
-                    url: "{% url 'save_mill' %}",  // Use the URL pattern name
-                    data: formData,
-                    success: function(response) {
-                        if (response.success) {
-                            $("#result").text("Form saved successfully.");
-                        } else {
-                            $("#result").text("Error: " + response.error);
-                        }
-                    }
-                });
-            });
-            document.getElementById('newdatePicker').value = new Date().toDateInputValue();
-        });
-    </script> {% endcomment %}
+    <!-- Page JS -->
+    <script src="/static/assets/js/dashboards-analytics.js"></script>
+    <script src="/static/assets/js/forms-pickers.js"></script>
 </body>
 
 </html>

@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+{% block 'title' %}Show Mill | Draupadi Mess{% endblock 'title' %}
+
+{% block 'content' %}
+    <div class="container-xxl flex-grow-1 container-p-y">
+        <h4 class="pt-3 mb-4"><span class="text-muted fw-light">Dashboard / </span>Add Diposit</h4>
+        <div class="card">
+            <div class="card-body">
+                <form method="post" class="row">
+                    {% csrf_token %}
+                    <div class="col-4">
+                        <div class="input-group input-group-merge mb-4">
+                            <span id="basic-icon-default-fullname2" class="input-group-text"><i class="mdi mdi-calendar-range"></i></span>
+                            <div class="form-floating form-floating-outline">
+                                <input type="text" name="date" class="form-control flatpickr-input active" placeholder="YYYY-MM-DD" id="flatpickr-date" readonly="readonly">
+                                <label for="basic-icon-default-fullname">Date</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <div class="input-group input-group-merge mb-4">
+                            <span id="basic-icon-default-fullname2" class="input-group-text"><i class="mdi mdi-chili-medium"></i></span>
+                            <div class="form-floating form-floating-outline">
+                                <select id="largeSelect" name="reasone" class="form-select form-select-lg">
+                                    <option value="O">Oil</option>
+                                    <option value="G">Gas</option>
+                                    <option value="V">Ginger & Garlic & etc.</option>
+                                </select>
+                                <label for="basic-icon-default-fullname">Reasone </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <div class="input-group input-group-merge mb-4">
+                            <span id="basic-icon-default-fullname2" class="input-group-text"><i class="mdi mdi-cash-check"></i></span>
+                            <div class="form-floating form-floating-outline">
+                                <input type="number" name="amount" class="form-control" id="basic-icon-default-fullname" placeholder="Amount" aria-label="Amount" aria-describedby="basic-icon-default-fullname2">
+                                <label for="basic-icon-default-fullname">Amount</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-12 text-center"><button type="submit" class="btn btn-primary">SAVE</button></div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+{% endblock 'content' %}
+

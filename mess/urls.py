@@ -20,6 +20,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 from core import views as core_view
 from account import views as acc_view
+from amount import views as amn_view
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -30,6 +31,8 @@ urlpatterns = [
     path('logout/', acc_view.Logout, name='logout'),
     path('mill/', include('mill.urls')),
     path('save_mill/', core_view.save_mill, name='save_mill'),
+    path('diposits/', amn_view.ShowDiposit, name='diposits'),
+    path('add-diposit/', amn_view.AddDiposit, name='adddiposits'),
 ]
 
 

@@ -39,7 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'core',
     'account',
-    'mill'
+    'mill',
+    'amount'
 ]
 AUTH_USER_MODEL = 'account.Member'
 LOGIN_URL = '/login/'  # Replace with your custom login URL

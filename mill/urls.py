@@ -19,4 +19,5 @@ from . import views
 
 urlpatterns = [
     path('add-mill/', views.AddMill, name='addmill'),
+    path('show-mill/', views.ShowMill, name='showmill'),
 ]

@@ -25,6 +25,14 @@ class Mill(models.Model):
     class Meta:
         unique_together = ('date', 'member',)
 
-    def __int__(self):
-        return self.mill
+    def __str__(self):
+        return str(self.date)
 
+
+class Bazar(models.Model):
+    date = models.DateField()
+    member = models.ForeignKey(Member, on_delete=models.CASCADE)
+    amount = models.IntegerField()
+
+    def __str__(self):
+        return str(self.date)

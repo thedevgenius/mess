@@ -1,0 +1,88 @@
+{% extends "base.html" %}
+
+{% block 'title' %}Show Mill | Draupadi Mess{% endblock 'title' %}
+
+{% block 'content' %}
+    <div class="container-xxl flex-grow-1 container-p-y">
+        <h4 class="pt-3 mb-4"><span class="text-muted fw-light">Dashboard / </span>Diposits & Expendtitures</h4>
+        <div class="card mb-5">
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="alert alert-success alert-dismissible" role="alert">
+                        {{message}}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>                        
+                {% endfor %}
+            {% endif %}
+            <h5 class="card-header">All Diposits</h5>
+            <div class="table-responsive text-nowrap">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Name</th>
+                            <th>Reasone</th>
+                            <th>Amount</th>
+                        </tr>
+                    </thead>
+                    <tbody class="table-border-bottom-1">
+                        {% for diposit in diposits %}
+                            <tr>
+                                <td>{{diposit.date}}</td>
+                                <td>{{diposit.member.first_name}}</td>
+                                <td>{% if diposit.purpose == 'M' %}Bazar {% elif diposit.purpose == 'O' %}Oil {% elif diposit.purpose == 'G' %} Gas {% elif diposit.purpose == 'V' %}Ginger, Garlic & etc.{% endif %}</td>
+                                <td>₹ {{diposit.amount}}</td>
+                            </tr>
+                        {% endfor %}                        
+                    </tbody>
+                    <tfoot class="table-border-bottom-0">
+                        <tr>
+                            <th colspan="3">Total</th>
+                            <th><strong>₹ {{total_amount}}</strong></th>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-6">
+                <div class="card">
+                    <h5 class="card-header">Gas, Oil</h5>
+                    <div class="table-responsive text-nowrap">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Date</th>
+                                    <th>Name</th>
+                                    <th>Amount</th>
+                                </tr>
+                            </thead>
+                            <tbody class="table-border-bottom-1">
+                                {% for common_exp in common_exps %}
+                                    <tr>
+                                        <td>{{common_exp.date}}</td>
+                                        <td>{{common_exp.member.first_name}}</td>
+                                        <td>₹ {{common_exp.amount}}</td>
+                                    </tr>
+                                {% endfor %}                        
+                            </tbody>
+                            <tfoot class="table-border-bottom-0">
+                                <tr>
+                                    <th colspan="2">Total</th>
+                                    <th><strong>₹ {{total_exp_emount}}</strong></th>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+{% endblock 'content' %}
+

@@ -37,3 +37,8 @@ class Member(AbstractUser):
     def __str__(self):
         return self.first_name
     
+    def __lt__(self, other):
+        # Define how you want to compare two Member instances
+        # For example, you could compare them based on a specific field like 'name'
+        return self.first_name < other.name
+    
