@@ -33,6 +33,9 @@ urlpatterns = [
     path('save_mill/', core_view.save_mill, name='save_mill'),
     path('diposits/', amn_view.ShowDiposit, name='diposits'),
     path('add-diposit/', amn_view.AddDiposit, name='adddiposits'),
+    path('expenditures/', amn_view.Expenditures, name='expenditures'),
+    path('add-exp/', amn_view.AddExp, name='add-exp'),
+    path('bill/', amn_view.Bill, name='bill'),
 ]
 
 

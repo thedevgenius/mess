@@ -157,7 +157,7 @@
                         <ul class="menu-sub">
                             <li class="menu-item{% if request.resolver_match.url_name == 'diposits' %} active open{% endif %}">
                                 <a href="{% url 'diposits' %}" class="menu-link">
-                                    <div data-i18n="Diposits">Diposits</div>
+                                    <div data-i18n="My Diposits">My Diposits</div>
                                 </a>
                             </li>
                             <li class="menu-item{% if request.resolver_match.url_name == 'adddiposits' %} active open{% endif %}">
@@ -167,26 +167,26 @@
                             </li>
                         </ul>
                     </li>
-
-                    {% comment %} <li class="menu-item{% if request.resolver_match.url_name == 'diposits' %} active open{% endif %}">
+                    
+                    <li class="menu-item{% if request.resolver_match.url_name == 'expenditures' %} active open{% endif %}">
                         <a href="javascript:void(0);" class="menu-link menu-toggle">
                             <i class="menu-icon tf-icons mdi mdi-cash-check"></i>
-                            <div data-i18n="Expenditure">Expenditure</div>
+                            <div data-i18n="Expenditures">Expenditures</div>
                         </a>
 
                         <ul class="menu-sub">
-                            <li class="menu-item{% if request.resolver_match.url_name == 'diposits' %} active open{% endif %}">
-                                <a href="{% url 'diposits' %}" class="menu-link">
-                                    <div data-i18n="Diposits">Expenditures</div>
+                            <li class="menu-item{% if request.resolver_match.url_name == 'expenditures' %} active open{% endif %}">
+                                <a href="{% url 'expenditures' %}" class="menu-link">
+                                    <div data-i18n="Expenditures">Expenditures</div>
                                 </a>
                             </li>
-                            <li class="menu-item{% if request.resolver_match.url_name == 'adddiposits' %} active open{% endif %}">
-                                <a href="{% url 'adddiposits' %}" class="menu-link">
-                                    <div data-i18n="Add Diposit">Add Diposits</div>
+                            <li class="menu-item{% if request.resolver_match.url_name == 'bill' %} active open{% endif %}">
+                                <a href="{% url 'bill' %}" class="menu-link">
+                                    <div data-i18n="Bills">Bills</div>
                                 </a>
                             </li>
                         </ul>
-                    </li> {% endcomment %}
+                    </li>
 
                 </ul>
             </aside>
@@ -201,17 +201,7 @@
                     </div>
 
                     <div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
-                        <!-- Search -->
-                        <div class="navbar-nav align-items-center">
-                            <div class="nav-item navbar-search-wrapper mb-0">
-                                <a class="nav-item nav-link search-toggler fw-normal px-0" href="javascript:void(0);">
-                                    <i class="mdi mdi-magnify mdi-24px scaleX-n1-rtl"></i>
-                                    <span class="d-none d-md-inline-block text-muted">Search (Ctrl+/)</span>
-                                </a>
-                            </div>
-                        </div>
-                        <!-- /Search -->
-
+                       
                         <ul class="navbar-nav flex-row align-items-center ms-auto">
                             <!-- Style Switcher -->
                             <li class="nav-item dropdown-style-switcher dropdown me-2 me-xl-0">
@@ -571,7 +561,7 @@
                                                 </div>
                                                 <div class="flex-grow-1">
                                                     <span class="fw-medium d-block">{{ request.user.first_name }} {{ request.user.last_name }}</span>
-                                                    <small class="text-muted">Admin</small>
+                                                    {% comment %} <small class="text-muted">Admin</small> {% endcomment %}
                                                 </div>
                                             </div>
                                         </a>
@@ -585,7 +575,7 @@
                                             <span class="align-middle">My Profile</span>
                                         </a>
                                     </li>
-                                    <li>
+                                    {% comment %} <li>
                                         <a class="dropdown-item" href="pages-account-settings-account.html">
                                             <i class="mdi mdi-cog-outline me-2"></i>
                                             <span class="align-middle">Settings</span>
@@ -618,9 +608,9 @@
                                     </li>
                                     <li>
                                         <div class="dropdown-divider"></div>
-                                    </li>
+                                    </li> {% endcomment %}
                                     <li>
-                                        <a class="dropdown-item" href="auth-login-cover.html" target="_blank">
+                                        <a class="dropdown-item" href="{% url 'logout' %}">
                                             <i class="mdi mdi-logout me-2"></i>
                                             <span class="align-middle">Log Out</span>
                                         </a>
@@ -646,8 +636,8 @@
                     <!-- Footer -->
                     <footer class="content-footer footer bg-footer-theme">
                         <div class="container-xxl">
-                            <div class="footer-container d-flex align-items-center justify-content-between py-3 flex-md-row flex-column">
-                                <div class="mb-2 mb-md-0">
+                            <div class="footer-container d-flex align-items-center justify-content-center py-3 flex-md-row flex-column">
+                                <div class="mb-2 mb-md-0 text-center">
                                     ©<script>document.write(new Date().getFullYear());</script><span class="text-danger"><i class="tf-icons mdi mdi-heart"></i></span>All Rights Reserved 
                                 </div>
                             </div>

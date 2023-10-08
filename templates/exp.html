@@ -5,43 +5,119 @@
 {% block 'content' %}
     <div class="container-xxl flex-grow-1 container-p-y">
         <h4 class="pt-3 mb-4"><span class="text-muted fw-light">Dashboard / </span>Expenditures</h4>
-        <div class="card">
-            {% if messages %}
-                {% for message in messages %}
-                    <div class="alert alert-success alert-dismissible" role="alert">
-                        {{message}}
-                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                    </div>                        
-                {% endfor %}
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert alert-success alert-dismissible" role="alert">
+                    {{message}}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>                        
+            {% endfor %}
+        {% endif %}
+        <div class="row gy-5">
+            {% if request.user.is_staff %}
+                <div class="col-12">
+                    <div class="card">
+                        <h5 class="card-header">All Diposits</h5>
+                        <div class="table-responsive text-nowrap">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Date</th>
+                                        <th>Name</th>
+                                        <th>Reasone</th>
+                                        <th>Amount</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="table-border-bottom-1">
+                                    {% for diposit in diposits %}
+                                        <tr>
+                                            <td>{{diposit.date}}</td>
+                                            <td>{{diposit.member.first_name}}</td>
+                                            <td>{% if diposit.purpose == 'O' %}Oil {% elif diposit.purpose == 'G' %} Gas {% elif diposit.purpose == 'V' %}Ginger, Garlic & etc.{% endif %}</td>
+                                            <td>₹ {{diposit.amount}}</td>
+                                            <td>
+                                                {% if diposit.ststus == False %}
+                                                    <form method="post" action="{% url 'add-exp' %}">
+                                                            {% csrf_token %}
+                                                            <input type="checkbox" name="diposit_status" checked hidden>
+                                                            <input type="numbber" name="diposit_id" hidden value="{{diposit.id}}">
+                                                            <input type="text" name="exp_title" hidden value="For {% if diposit.purpose == 'O' %}Oil {% elif diposit.purpose == 'G' %} Gas {% elif diposit.purpose == 'V' %}Ginger, Garlic & etc.{% endif %} From {{diposit.member.first_name}}">
+                                                            <button type="submit" class="btn btn-primary">ADD EXP</button>
+                                                    </form>
+                                                {% else %}
+                                                    Added
+                                               {% endif %}
+                                            </td>
+                                        </tr>
+                                    {% endfor %}                        
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
             {% endif %}
-            <h5 class="card-header">All Expenditures</h5>
-            <div class="table-responsive text-nowrap">
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th>Date</th>
-                            <th>Name</th>
-                            <th>Reasone</th>
-                            <th>Amount</th>
-                        </tr>
-                    </thead>
-                    <tbody class="table-border-bottom-1">
-                        {% for diposit in diposits %}
-                            <tr>
-                                <td>{{diposit.date}}</td>
-                                <td>{{diposit.member.first_name}}</td>
-                                <td>{% if diposit.purpose == 'M' %}Bazar {% elif diposit.purpose == 'O' %}Oil {% elif diposit.purpose == 'G' %} Gas {% elif diposit.purpose == 'V' %}Ginger, Garlic & etc.{% endif %}</td>
-                                <td>₹ {{diposit.amount}}</td>
-                            </tr>
-                        {% endfor %}                        
-                    </tbody>
-                    <tfoot class="table-border-bottom-0">
-                        <tr>
-                            <th colspan="3">Total</th>
-                            <th><strong>₹ {{total_amount}}</strong></th>
-                        </tr>
-                    </tfoot>
-                </table>
+            <div class="col-6">
+                <div class="card">
+                    <h5 class="card-header">Oil & Gas</h5>
+                    <div class="table-responsive text-nowrap">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Date</th>
+                                    <th>Name</th>
+                                    <th>Amount</th>
+                                </tr>
+                            </thead>
+                            <tbody class="table-border-bottom-1">
+                                {% for est_exp in est_exps %}
+                                    <tr>
+                                        <td>{{est_exp.diposit.date}}</td>
+                                        <td>{{est_exp.diposit.member.first_name}}</td>
+                                        <td>₹ {{est_exp.diposit.amount}}</td>
+                                    </tr>
+                                {% endfor %}                        
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <th colspan="2">Total</th>
+                                    <th><strong>₹ {{total_est_amount}}</strong></th>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="card">
+                    <h5 class="card-header">Others</h5>
+                    <div class="table-responsive text-nowrap">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Date</th>
+                                    <th>Name</th>
+                                    <th>Amount</th>
+                                </tr>
+                            </thead>
+                            <tbody class="table-border-bottom-1">
+                                {% for oth_exp in oth_exps %}
+                                    <tr>
+                                        <td>{{oth_exp.diposit.date}}</td>
+                                        <td>{{oth_exp.diposit.member.first_name}}</td>
+                                        <td>₹ {{oth_exp.diposit.amount}}</td>
+                                    </tr>
+                                {% endfor %}                        
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <th colspan="2">Total</th>
+                                    <th><strong>₹ {{total_oth_exps}}</strong></th>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

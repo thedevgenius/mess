@@ -27,11 +27,14 @@ def Registration(request):
 
 def Login(request):
     if request.method == 'POST':
+        next_url = request.POST.get('next')
         phone=request.POST['phone']
         password=request.POST['password']
         user = authenticate(phone=phone, password=password)
         if user is not None:
             login(request, user)
+            if next_url:
+                return redirect(next_url)
             return redirect('dashboard')
         
     return render(request, 'login.html')

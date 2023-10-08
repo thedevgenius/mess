@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block 'title' %}Show Mill | Draupadi Mess{% endblock 'title' %}
+
+{% block 'content' %}
+    <div class="container-xxl flex-grow-1 container-p-y">
+        <h4 class="pt-3 mb-4"><span class="text-muted fw-light">Dashboard / </span>Bill</h4>
+        <div class="card mb-5">
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="alert alert-success alert-dismissible" role="alert">
+                        {{message}}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>                        
+                {% endfor %}
+            {% endif %}
+            
+            
+        </div>
+    </div>
+
+
+
+
+
+{% endblock 'content' %}
+

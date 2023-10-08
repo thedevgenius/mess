@@ -47,6 +47,8 @@ def AddMill(request):
                 amount=total_amount
             )
             
+
+            
             #print(total_amount)
         except IntegrityError:
             messages.error(request, 'Mill for this date aready added.')
@@ -62,10 +64,7 @@ def AddMill(request):
 
 
 def ShowMill(request):
-    # today = datetime.date.today()
-    # first_day = today.replace(day=1)
-    # last_day = (first_day + datetime.timedelta(days=32)).replace(day=1) - datetime.timedelta(days=1)
-    # dates = [first_day + datetime.timedelta(days=i) for i in range((last_day - first_day).days + 1)]
+
 
     members = Member.objects.all()
     mills = Mill.objects.all()
