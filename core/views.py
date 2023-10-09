@@ -61,7 +61,7 @@ def Dashboard(request):
         diposit_amount = 0
 
     total_diposit = 0
-    total_diposit = diposit_amount+bazar_amount
+    total_diposit = diposit_amount
 
     data = {
         'total_mill' : total_mill,

@@ -47,14 +47,12 @@ def AddMill(request):
                 amount=total_amount
             )
             
-
-            
             #print(total_amount)
         except IntegrityError:
             messages.error(request, 'Mill for this date aready added.')
             return redirect('addmill')
-        messages.success(request, 'Mill Added !')
-        return redirect('showmill')
+        messages.success(request, 'Mill Added !', extra_tags='alert alert-success')
+        return redirect('dashboard')
 
     data = {
         'members' : members
@@ -64,8 +62,6 @@ def AddMill(request):
 
 
 def ShowMill(request):
-
-
     members = Member.objects.all()
     mills = Mill.objects.all()
     bazars = Bazar.objects.all().order_by('date')

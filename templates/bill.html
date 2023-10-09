@@ -5,7 +5,7 @@
 {% block 'content' %}
     <div class="container-xxl flex-grow-1 py-0">
         <h4 class="pt-3 mb-4"><span class="text-muted fw-light">Dashboard / </span>Bill</h4>
-        {% if cal_btn %}
+        {% if cal_btn and request.user.is_staff %}
             <form method="post" action="{% url 'calculate' %}" class="mb-4">
                 {% csrf_token %}
                 <button type="submit" class="btn btn-primary">Calculate</button>

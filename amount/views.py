@@ -68,6 +68,9 @@ def AddExp(request):
 
 @login_required
 def Expenditures(request):
+    if not request.user.is_staff:
+        return redirect('dashboard')
+    
     current_date = timezone.now()
     diposits = Diposit.objects.filter(date__month=current_date.month, date__year=current_date.year).exclude(purpose='M')
 

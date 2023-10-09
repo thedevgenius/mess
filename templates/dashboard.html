@@ -5,6 +5,14 @@
 {% block 'content' %}
     <div class="container-xxl flex-grow-1 py-0">
         <h4 class="py-3 mb-2"><span class="text-muted fw-light">Dashboard</h4>
+        {% if messages %}
+            {% for message in messages %}
+                <div class="{{message.extra_tags}} alert-dismissible" role="alert">
+                    {{message}}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>                        
+            {% endfor %}
+        {% endif %}
         <div class="row mb-5">
             <div class="col-md-3">
                 <div class="card">
