@@ -7,7 +7,7 @@ from amount.models import *
 
 # Create your views here.
 def AddMill(request):
-    members = Member.objects.all()
+    members = Member.objects.all().order_by('first_name')
     
     if request.method == 'POST':
         count = Member.objects.count()

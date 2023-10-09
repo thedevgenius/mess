@@ -52,9 +52,13 @@ def Dashboard(request):
     total_bazar = Bazar.objects.filter(date__month=date.month, date__year=date.year, member_id=request.user.id).count()
     my_bazars = Bazar.objects.filter(date__month=date.month, date__year=date.year, member_id=request.user.id)
     bazar_amount = Bazar.objects.filter(date__month=date.month, date__year=date.year, member_id=request.user.id).aggregate(Sum('amount'))['amount__sum']
+    if bazar_amount is None:
+        bazar_amount = 0
 
     diposits = Diposit.objects.filter(date__month=date.month, date__year=date.year, member_id=request.user.id)
     diposit_amount = diposits.aggregate(Sum('amount'))['amount__sum']
+    if diposit_amount is None:
+        diposit_amount = 0
 
     total_diposit = 0
     total_diposit = diposit_amount+bazar_amount

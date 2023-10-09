@@ -7,6 +7,7 @@ from django.db.models import Sum, Q, Count
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from .utils import *
+import math
 # Create your views here.
 
 @login_required
@@ -68,7 +69,7 @@ def AddExp(request):
 @login_required
 def Expenditures(request):
     current_date = timezone.now()
-    diposits = Diposit.objects.filter(date__month=current_date.month-1, date__year=current_date.year, member_id=request.user.id).exclude(purpose='M')
+    diposits = Diposit.objects.filter(date__month=current_date.month, date__year=current_date.year).exclude(purpose='M')
 
     est_exps = Exp.objects.filter(diposit__date__month=current_date.month, diposit__date__year=current_date.year, diposit__purpose__in=('O','G'))
     total_est_amount = est_exps.aggregate(Sum('diposit__amount'))['diposit__amount__sum']
@@ -113,16 +114,19 @@ def Bills(request):
         year = get_prev_year()
         mill_charge = get_millcharge()
         est_charge = get_est_charge()
-                
+        print(est_charge)
+
+
+
         members = Member.objects.filter(is_active=True)
         for member in members:
             my_mill = Mill.objects.filter(date__month=month, date__year=year, member_id=member.id).aggregate(Sum('mill'))['mill__sum']
             mill_cost = my_mill*mill_charge
-            totalcost = round((mill_cost+est_charge), 2)
+            totalcost = math.ceil(mill_cost+est_charge)
             my_diposit = Diposit.objects.filter(date__month=month, date__year=year, member_id=member.id).aggregate(Sum('amount'))['amount__sum']
             if my_diposit == None:
                 my_diposit = 0
-            due=round((totalcost-my_diposit), 2)
+            due=math.ceil(totalcost-my_diposit)
             try:
                 bill = Bill.objects.get(month=month, year=year, name_id=member.id)
                 bill.mill=my_mill                
