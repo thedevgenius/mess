@@ -6,6 +6,7 @@ from django.utils import timezone
 from django.db.models import Sum, Q, Count
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+from .utils import *
 # Create your views here.
 
 @login_required
@@ -85,49 +86,62 @@ def Expenditures(request):
     return render(request, 'exp.html', data)
 
 
+    
+
+
+def MyBill(request):
+    month = get_prev_month()
+    year = get_prev_year()
+
+    try:
+        cal_btn = CommonExp.objects.get(month=month, year=year)
+    except CommonExp.DoesNotExist:
+        cal_btn = None
+    
+    data = {
+        'cal_btn' : cal_btn
+    }
+    return render(request, 'bill.html', data)
+
+
+
+
 @login_required
-def Bill(request):
-    current = timezone.now()
-    month = current.month
-    if month == 12:
-        year = current.year-1
-    else:
-        year = current.year
-    if month == 1:
-        month = 12
-    else:
-        month = month-1
-    
-    total_mill = Mill.objects.filter(date__month=month, date__year=year).aggregate(Sum('mill'))['mill__sum']
-
-    total_bazar_cost = Bazar.objects.filter(date__month=month, date__year=year).aggregate(Sum('amount'))['amount__sum']
-
-    total_extra = Exp.objects.filter(diposit__date__month=month, diposit__date__year=year).exclude(diposit__purpose__in=('O', 'G')).aggregate(Sum('diposit__amount'))['diposit__amount__sum']
-    if total_extra:
-        total_extra = total_extra
-    else:
-        total_extra = 0
-
-    total_cost = total_bazar_cost+total_extra
-    mill_charge = round((total_cost/total_mill), 2)
-
-    est = Exp.objects.filter(diposit__date__month=month, diposit__date__year=year, diposit__purpose__in=('O', 'G')).aggregate(Sum('diposit__amount'))['diposit__amount__sum']
-    common_est = CommonExp.objects.get(date__month=month, date__year=year)
-    total_common_est = common_est.electric + common_est.rice + common_est.coock
-    
-    total_est = est+total_common_est
-    number_of_member = Member.objects.filter(is_active=True).count()
-    est_charge = round((total_est/number_of_member), 2)
-
-    
-    members = Member.objects.all()
-
-    if common_est is not None:
+def Bills(request):
+    if request.method == 'POST':
+        month = get_prev_month()
+        year = get_prev_year()
+        mill_charge = get_millcharge()
+        est_charge = get_est_charge()
+                
+        members = Member.objects.filter(is_active=True)
         for member in members:
             my_mill = Mill.objects.filter(date__month=month, date__year=year, member_id=member.id).aggregate(Sum('mill'))['mill__sum']
-            print(my_mill)
-            
-
-
-
-    return render(request, 'bill.html')
+            mill_cost = my_mill*mill_charge
+            totalcost = round((mill_cost+est_charge), 2)
+            my_diposit = Diposit.objects.filter(date__month=month, date__year=year, member_id=member.id).aggregate(Sum('amount'))['amount__sum']
+            if my_diposit == None:
+                my_diposit = 0
+            due=round((totalcost-my_diposit), 2)
+            try:
+                bill = Bill.objects.get(month=month, year=year, name_id=member.id)
+                bill.mill=my_mill                
+                bill.establish = est_charge
+                bill.total = totalcost
+                bill.due = due
+                bill.diposit = my_diposit
+                bill.save()
+            except Bill.DoesNotExist:
+                name = Member.objects.get(pk=member.id)
+                Bill.objects.create(
+                    month=month,
+                    year=year,
+                    name=name,
+                    mill=my_mill,
+                    mill_cost=mill_cost,
+                    establish=est_charge,
+                    total=totalcost,
+                    diposit=my_diposit,
+                    due=due
+                )
+    return redirect(request.META.get('HTTP_REFERER', 'home'))

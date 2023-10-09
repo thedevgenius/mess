@@ -3,7 +3,7 @@
 {% block 'title' %}Show Mill | Draupadi Mess{% endblock 'title' %}
 
 {% block 'content' %}
-    <div class="container-xxl flex-grow-1 container-p-y">
+    <div class="container-xxl flex-grow-1 container-p-y">        
         <h4 class="pt-3 mb-4"><span class="text-muted fw-light">Dashboard / </span>Expenditures</h4>
         {% if messages %}
             {% for message in messages %}
@@ -29,7 +29,7 @@
                                         <th>Action</th>
                                     </tr>
                                 </thead>
-                                <tbody class="table-border-bottom-1">
+                                <tbody class="table-border-bottom-0">
                                     {% for diposit in diposits %}
                                         <tr>
                                             <td>{{diposit.date}}</td>
@@ -120,7 +120,10 @@
                 </div>
             </div>
         </div>
+    
+        
     </div>
+
 
 
 

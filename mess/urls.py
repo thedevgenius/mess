@@ -21,6 +21,7 @@ from django.conf.urls.static import static
 from core import views as core_view
 from account import views as acc_view
 from amount import views as amn_view
+from mill import views as mill_view
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -30,12 +31,14 @@ urlpatterns = [
     path('login/', acc_view.Login, name='login'),
     path('logout/', acc_view.Logout, name='logout'),
     path('mill/', include('mill.urls')),
+    path('add-mill/', mill_view.AddMill, name='addmill'),
     path('save_mill/', core_view.save_mill, name='save_mill'),
     path('diposits/', amn_view.ShowDiposit, name='diposits'),
     path('add-diposit/', amn_view.AddDiposit, name='adddiposits'),
     path('expenditures/', amn_view.Expenditures, name='expenditures'),
     path('add-exp/', amn_view.AddExp, name='add-exp'),
-    path('bill/', amn_view.Bill, name='bill'),
+    path('calculate/', amn_view.Bills, name='calculate'),
+    path('bill/', amn_view.MyBill, name='bill'),
 ]
 
 

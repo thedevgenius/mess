@@ -5,7 +5,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
 
-    <title>Dashboard - Analytics | Materialize - Material Design HTML Admin Template</title>
+    <title>{% block 'title' %}{% endblock 'title' %}</title>
 
 
     <!-- Favicon -->
@@ -132,43 +132,9 @@
                     </li>
 
                     <!-- Layouts -->
-                    <li class="menu-item{% if request.resolver_match.url_name == 'addmill' %} active open{% endif %}">
-                        <a href="javascript:void(0);" class="menu-link menu-toggle">
-                            <i class="menu-icon tf-icons mdi mdi-silverware-fork-knife"></i>
-                            <div data-i18n="Mill">Mill</div>
-                        </a>
-
-                        <ul class="menu-sub">
-                            <li class="menu-item{% if request.resolver_match.url_name == 'addmill' %} active open{% endif %}">
-                                <a href="{% url 'addmill' %}" class="menu-link">
-                                    <div data-i18n="Add Mill">Add Mill</div>
-                                </a>
-                            </li>
-                            
-                        </ul>
-                    </li>
-
-                    <li class="menu-item{% if request.resolver_match.url_name == 'diposits' %} active open{% endif %}">
-                        <a href="javascript:void(0);" class="menu-link menu-toggle">
-                            <i class="menu-icon tf-icons mdi mdi-cash-check"></i>
-                            <div data-i18n="Diposit">Diposit</div>
-                        </a>
-
-                        <ul class="menu-sub">
-                            <li class="menu-item{% if request.resolver_match.url_name == 'diposits' %} active open{% endif %}">
-                                <a href="{% url 'diposits' %}" class="menu-link">
-                                    <div data-i18n="My Diposits">My Diposits</div>
-                                </a>
-                            </li>
-                            <li class="menu-item{% if request.resolver_match.url_name == 'adddiposits' %} active open{% endif %}">
-                                <a href="{% url 'adddiposits' %}" class="menu-link">
-                                    <div data-i18n="Add Diposit">Add Diposits</div>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
                     
-                    <li class="menu-item{% if request.resolver_match.url_name == 'expenditures' %} active open{% endif %}">
+                    
+                    <li class="menu-item{% if request.resolver_match.url_name == 'expenditures' or request.resolver_match.url_name == 'bill' %} active open{% endif %}">
                         <a href="javascript:void(0);" class="menu-link menu-toggle">
                             <i class="menu-icon tf-icons mdi mdi-cash-check"></i>
                             <div data-i18n="Expenditures">Expenditures</div>
@@ -182,7 +148,7 @@
                             </li>
                             <li class="menu-item{% if request.resolver_match.url_name == 'bill' %} active open{% endif %}">
                                 <a href="{% url 'bill' %}" class="menu-link">
-                                    <div data-i18n="Bills">Bills</div>
+                                    <div data-i18n="Bill">Bill</div>
                                 </a>
                             </li>
                         </ul>

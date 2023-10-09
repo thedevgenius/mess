@@ -4,7 +4,10 @@ from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse
 from django.template.loader import render_to_string
 from mill.models import *
+from amount.models import *
 from account.models import Member
+from django.utils import timezone
+from django.db.models import Sum, Count
 
 # Create your views here.
 def Home(request):
@@ -37,16 +40,34 @@ def save_mill(request):
         return JsonResponse({'success':True})
     else:
         return JsonResponse({'success': False, 'error': 'Invalid request method'})
+    
+
 
 @cache_control(no_cache=True, must_revalidate=True, no_store=True)
 @login_required(login_url='/login/')
 def Dashboard(request):
-    return render(request, 'dashboard.html')
+    date = timezone.now()
+    total_mill = Mill.objects.filter(date__month=date.month, date__year=date.year, member_id=request.user.id).aggregate(Sum('mill'))['mill__sum']
+    
+    total_bazar = Bazar.objects.filter(date__month=date.month, date__year=date.year, member_id=request.user.id).count()
+    my_bazars = Bazar.objects.filter(date__month=date.month, date__year=date.year, member_id=request.user.id)
+    bazar_amount = Bazar.objects.filter(date__month=date.month, date__year=date.year, member_id=request.user.id).aggregate(Sum('amount'))['amount__sum']
 
+    diposits = Diposit.objects.filter(date__month=date.month, date__year=date.year, member_id=request.user.id)
+    diposit_amount = diposits.aggregate(Sum('amount'))['amount__sum']
 
-# def get_mills(request):
-#     posts = Mill.objects.all()
-#     posts_html = render_to_string('content.html', {'posts': posts})
+    total_diposit = 0
+    total_diposit = diposit_amount+bazar_amount
 
-#     return JsonResponse({'posts_html': posts_html})
+    data = {
+        'total_mill' : total_mill,
+        'total_bazar' : total_bazar,
+        'my_bazars' : my_bazars,
+        'bazar_amount' : bazar_amount,
+        'diposits' : diposits,
+        'diposit_amount' : diposit_amount,
+        'total_diposit' : total_diposit
+    }
+    return render(request, 'dashboard.html', data)
+
 
