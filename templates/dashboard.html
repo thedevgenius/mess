@@ -30,7 +30,7 @@
                         {% if total_bazar > 0 %}
                             <h5 class="mt-3 d-flex justify-content-between"><span>Total Bazar</span> <strong>{{total_bazar}}</strong></h5>
                         {% else %}
-                            <h5>No Bazar Yet</h5>
+                            <h5 class="mt-3">No Bazar Yet</h5>
                         {% endif %}
                     </div>
                 </div>
@@ -43,84 +43,115 @@
                         {% if total_diposit > 0 %}
                             <h5 class="mt-3 d-flex justify-content-between"><span>Total Diposit</span> <strong>₹ {{total_diposit}}</strong></h5>
                         {% else %}
-                            <h5>No Diposit Yet</h5>
+                            <h5 class="mt-3">No Diposit Yet</h5>
                         {% endif %}
                     </div>
                 </div>
             </div>          
         </div>
 
-        <div class="row">
-            
-                <div class="col-md-6">
-                    <div class="card">
-                        <div class="card-header d-flex justify-content-between"><h5 class="mb-0">My bazars</h5><a href="{% url 'addmill' %}" class="btn btn-primary">Add Bazar</a></div>
-                        {% if my_bazars %}
-                            <div class="table-responsive text-nowrap">
-                                <table class="table">
-                                    <thead>
+        <div class="row gy-5">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header d-flex justify-content-between"><h5 class="mb-0">My bazars</h5><a href="{% url 'addmill' %}" class="btn btn-primary">Add Bazar</a></div>
+                    {% if my_bazars %}
+                        <div class="table-responsive text-nowrap">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Date</th>
+                                        <th>Purpose</th>
+                                        <th>Amount</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for my_bazar in my_bazars %}
                                         <tr>
-                                            <th>Date</th>
-                                            <th>Purpose</th>
-                                            <th>Amount</th>
+                                            <td>{{my_bazar.date}}</td>
+                                            <td>Bazar</td>
+                                            <td>₹ {{my_bazar.amount}}</td>
                                         </tr>
-                                    </thead>
-                                    <tbody>
-                                        {% for my_bazar in my_bazars %}
-                                            <tr>
-                                                <td>{{my_bazar.date}}</td>
-                                                <td>Bazar</td>
-                                                <td>₹ {{my_bazar.amount}}</td>
-                                            </tr>
-                                        {% endfor %}
-                                    </tbody>
-                                    <tbody class="table-border-bottom-0">
-                                            <tr>
-                                                <td colspan="2">Total</td>
-                                                <td><strong>₹ {{bazar_amount}}</strong></td>
-                                            </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        {% endif %}
-                    </div>
+                                    {% endfor %}
+                                </tbody>
+                                <tbody class="table-border-bottom-0">
+                                        <tr>
+                                            <td colspan="2">Total</td>
+                                            <td><strong>₹ {{bazar_amount}}</strong></td>
+                                        </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    {% endif %}
                 </div>
+            </div>
             
-
-            
-                <div class="col-md-6">
-                    <div class="card">
-                        <div class="card-header d-flex justify-content-between"><h5 class="mb-0">My Diposits</h5><a href="{% url 'adddiposits' %}" class="btn btn-primary">Add Diposit</a></div>
-                        {% if diposits %}
-                            <div class="table-responsive text-nowrap">
-                                <table class="table">
-                                    <thead>
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header d-flex justify-content-between"><h5 class="mb-0">My Diposits</h5><a href="{% url 'adddiposits' %}" class="btn btn-primary">Add Diposit</a></div>
+                    {% if diposits %}
+                        <div class="table-responsive text-nowrap">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Date</th>
+                                        <th>Purpose</th>
+                                        <th>Amount</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for diposit in diposits %}
                                         <tr>
-                                            <th>Date</th>
-                                            <th>Purpose</th>
-                                            <th>Amount</th>
+                                            <td>{{diposit.date}}</td>
+                                            <td>{% if diposit.purpose == 'M' %}Bazar {% elif diposit.purpose == 'O' %}Oil {% elif diposit.purpose == 'G' %} Gas {% elif diposit.purpose == 'V' %}Ginger, Garlic & etc.{% endif %}</td>
+                                            <td>₹ {{diposit.amount}}</td>
                                         </tr>
-                                    </thead>
-                                    <tbody>
-                                        {% for diposit in diposits %}
-                                            <tr>
-                                                <td>{{diposit.date}}</td>
-                                                <td>{% if diposit.purpose == 'M' %}Bazar {% elif diposit.purpose == 'O' %}Oil {% elif diposit.purpose == 'G' %} Gas {% elif diposit.purpose == 'V' %}Ginger, Garlic & etc.{% endif %}</td>
-                                                <td>₹ {{diposit.amount}}</td>
-                                            </tr>
-                                        {% endfor %}
-                                    </tbody>
-                                    <tbody class="table-border-bottom-0">
-                                            <tr>
-                                                <td colspan="2">Total</td>
-                                                <td><strong>₹ {{diposit_amount}}</strong></td>
-                                            </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        {% endif %}
-                    </div>
-                </div>            
+                                    {% endfor %}
+                                </tbody>
+                                <tbody class="table-border-bottom-0">
+                                        <tr>
+                                            <td colspan="2">Total</td>
+                                            <td><strong>₹ {{diposit_amount}}</strong></td>
+                                        </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header"><h5 class="mb-0">My Diposits</h5></div>
+                    {% if mills %}
+                        <div class="table-responsive text-nowrap">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Date</th>
+                                        <th>Mill</th>
+                                        <th>Bazar</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for mill in mills %}
+                                        <tr>
+                                            <td>{{mill.date}}</td>
+                                            <td>{{mill.mill}}</td>
+                                            <td>{{mill.bazar}}</td>
+                                        </tr>
+                                    {% endfor %}
+                                </tbody>
+                                <tbody class="table-border-bottom-0">
+                                        <tr>
+                                            <td colspan="2">Total</td>
+                                            <td><strong>{{total_mill}}</strong></td>
+                                        </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
         </div>
     </div>
 

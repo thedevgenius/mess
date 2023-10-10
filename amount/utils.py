@@ -3,6 +3,8 @@ from mill.models import *
 from django.utils import timezone
 from django.db.models import Sum, Q, Count
 
+
+
 def get_prev_month():
     current = timezone.now()
     month = current.month
@@ -20,6 +22,35 @@ def get_prev_year():
     else:
         year = current.year
     return year
+
+
+def get_month_name(number):
+    if number == 1:
+        name = 'January'
+    elif number == 2:
+        name = 'February'
+    elif number == 3:
+        name = 'March'
+    elif number == 4:
+        name = 'April'
+    elif number == 5:
+        name = 'May'
+    elif number == 6:
+        name = 'June'
+    elif number == 7:
+        name = 'July'
+    elif number == 8:
+        name = 'August'
+    elif number == 9:
+        name = 'September'
+    elif number == 10:
+        name = 'October'
+    elif number == 11:
+        name = 'November'
+    elif number == 12:
+        name = 'December'
+    
+    return name
 
 
 def get_millcharge():

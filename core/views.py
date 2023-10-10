@@ -63,6 +63,8 @@ def Dashboard(request):
     total_diposit = 0
     total_diposit = diposit_amount
 
+    mills = Mill.objects.filter(date__month=date.month, date__year=date.year, member_id=request.user.id)
+
     data = {
         'total_mill' : total_mill,
         'total_bazar' : total_bazar,
@@ -70,7 +72,8 @@ def Dashboard(request):
         'bazar_amount' : bazar_amount,
         'diposits' : diposits,
         'diposit_amount' : diposit_amount,
-        'total_diposit' : total_diposit
+        'total_diposit' : total_diposit,
+        'mills' : mills
     }
     return render(request, 'dashboard.html', data)
 

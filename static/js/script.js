@@ -17,7 +17,7 @@
             $('#header .col-md-7').removeClass('bg-blue');
         }
     });
-
+    document.getElementsByClassName
     // Background-images
     $('[data-background]').each(function () {
         $(this).css({

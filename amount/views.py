@@ -96,14 +96,22 @@ def Expenditures(request):
 def MyBill(request):
     month = get_prev_month()
     year = get_prev_year()
-
+    month_name = get_month_name(month)
     try:
         cal_btn = CommonExp.objects.get(month=month, year=year)
     except CommonExp.DoesNotExist:
         cal_btn = None
-    
+    bills = Bill.objects.filter(month=month, year=year)
+    mybill = Bill.objects.get(month=month, year=year, name_id=request.user.id)
+    mill_charge = get_millcharge()
+
     data = {
-        'cal_btn' : cal_btn
+        'cal_btn' : cal_btn,
+        'bills' : bills,
+        'month' : month_name,
+        'year' : year,
+        'mybill' : mybill,
+        'mill_charge' : mill_charge
     }
     return render(request, 'bill.html', data)
 

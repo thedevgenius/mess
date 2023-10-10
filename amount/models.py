@@ -72,6 +72,7 @@ class Bill(models.Model):
     total = models.FloatField()
     diposit = models.IntegerField(default=0)
     due = models.FloatField()
+    is_paid = models.BooleanField(default=False)
 
     class Meta:
         unique_together = ('month', 'year', 'name')
